@@ -1,0 +1,15 @@
+<!-- Extend our base template -->
+{% extends 'partials/base.html' %}
+
+<!-- Override the content block from the base template to insert our own markup -->
+{% block content %}
+  <!-- Call `super()` to include any markup from our base template's content block -->
+  {{ super() }}
+
+  <div class="text-center">
+    <h1>{{ error.title }} ({{ error.status_code }})</h1>
+    <p>{{ error.message }}</p>
+  </div>
+
+<!-- End overriding the content block -->
+{% endblock content %}

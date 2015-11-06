@@ -1,0 +1,22 @@
+<!-- Extend our base template -->
+{% extends 'partials/base.html' %}
+
+<!-- Override the content block from the base template to insert our own markup -->
+{% block content %}
+  <!-- Call `super()` to include any markup from our base template's content block -->
+  {{ super() }}
+
+  <article>
+    <header>
+      <!-- Include the page's title -->
+      <h1>{{ page.title }}</h1>
+    </header>
+
+    <div class="content">
+      <!-- Include the page's content -->
+      {{ page.content }}
+    </div>
+  </article>
+
+<!-- End overriding the content block -->
+{% endblock content %}

@@ -1,0 +1,22 @@
+<header>
+  <div class="container text-center">
+    <!-- Include our site's title -->
+    <h1><a href="/">{{ site.title }}</a></h1>
+
+    <!-- Include our site's description -->
+    {{ site.description }}
+
+    <!-- If our site's navigation has any visibile navigation items then include them -->
+    {% if site.navigation %}
+      <nav>
+        <ul class="list-unstyled list-inline">
+          <!-- Loop over each of the site's navigation items -->
+          {% for item in site.navigation %}
+            <!-- Include the navigation item title as a link -->
+            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+</header>

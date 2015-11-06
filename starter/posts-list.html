@@ -1,0 +1,71 @@
+<!-- Extend our base template -->
+{% extends 'partials/base.html' %}
+
+<!-- Override the content block from the base template to insert our own markup -->
+{% block content %}
+  <!-- Call `super()` to include any markup from our base template's content block -->
+  {{ super() }}
+
+  <!-- If the posts are filtered by tags then include a title of which tags -->
+  {% if filters.tags %}
+    <!-- Include tags title -->
+    <h1>{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h1>
+  {% endif %}
+
+  <!-- Loop over each of the posts -->
+  {% for post in posts %}
+    <article>
+      <header>
+        <!-- Include the post's title -->
+        <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+        <p>
+          <!-- Include the post's published date as well as a machine-readable version -->
+          <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time>
+          <!-- Include all the post's tags in our preferred formatting -->
+          {{ post.tags|tags(last_separator=' and ', prefix=' in ') }}
+        </p>
+      </header>
+
+      <div class="content">
+        <!-- Include the post's excerpt -->
+        {{ post.excerpt }}
+      </div>
+
+      <footer>
+        <!-- Include a link to read the full post -->
+        <a href="{{ post.url }}">Read more</a>
+      </footer>
+    </article>
+  <!-- Else there are no posts to display -->
+  {% else %}
+    <h1>No posts</h1>
+  {% endfor %}
+
+  <!-- If the posts are paginated the include the pagination details -->
+  {% if pagination.has_pages %}
+    <nav class="text-center">
+      <ul class="pagination">
+        <!-- If there is a previous page then include a link -->
+        {% if pagination.has_prev %}
+          <li><a href="{{ pagination.prev }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        <!-- Else display a disabled placeholder -->
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+        <!-- Display the current page number and pages count of the pagination -->
+        <li><span>Page {{ pagination.page_number }} of {{ pagination.pages_count }}</span></li>
+
+        <!-- If there is a previous page then include a link -->
+        {% if pagination.has_next %}
+          <li><a href="{{ pagination.next }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        <!-- Else display a disabled placeholder -->
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+
+<!-- End overriding the content block -->
+{% endblock content %}
