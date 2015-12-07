@@ -1,0 +1,21 @@
+<div class="container">
+  <header class="site-header col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+    <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+    {% if site.description %}
+      <div class="site-tagline">
+        {{ site.description }}
+      </div>
+    {% endif %}
+
+    {% if site.navigation %}
+      <nav class="site-nav">
+        <ul>
+          {% for navigation_item in site.navigation %}
+            <li><a href="{{ navigation_item.url }}">{{ navigation_item.title }}</a></li>
+          {% endfor %}
+        </ul>
+        <a href="#" class="menu-reveal">Show Menu</a>
+      </nav>
+    {% endif %}
+  </header>
+</div>

@@ -1,0 +1,10 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="error">
+    <h1>{{ error.title }} ({{ error.status_code }})</h1>
+    <p>{{ error.message }}</p>
+  </div>
+{% endblock content %}

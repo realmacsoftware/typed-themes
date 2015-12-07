@@ -1,0 +1,69 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  {% if filters.tags %}
+    <div class="row">
+      <div class="main posts col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <h1 class="tag-title">{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h1>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="main col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      {% for post in posts %}
+        <article>
+          <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          <div class="post-meta">
+            <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time>
+            {{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}
+          </div>
+          <div class="post-excerpt">
+            {{ post.excerpt }}
+            <a href="{{ post.url }}" class="read-more">Read more</a>
+          </div>
+        </article>
+      {% else %}
+        <p>No posts</p>
+      {% endfor %}
+
+      {% if pagination.has_pages %}
+      <nav class="site-pagination">
+        <ul class="pagination">
+          {% if pagination.has_prev %}
+            <li>
+              <a href="{{ pagination.prev }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {% endif %}
+
+          <li><a>Page {{ pagination.page_number }} of {{ pagination.pages_count }}</a></li>
+
+          {% if pagination.has_next %}
+            <li>
+              <a href="{{ pagination.next }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

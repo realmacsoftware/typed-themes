@@ -1,0 +1,36 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="row">
+    <div class="main col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <article class="post">
+        <h1 class="post-title">{{ post.title }}</h1>
+
+        <div class="post-meta">
+          <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time>
+          {{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}
+        </div>
+
+        <div class="post-content">
+          {{ post.content }}
+        </div>
+
+        {{ site.code_post }}
+
+        {% for author in post.authors %}
+          <div class="row post-author">
+            <div class="col-xs-2 author-avatar">
+              <img src="{{ author.avatar }}">
+            </div>
+            <div class="col-xs-10 author-bio">
+              <h3>{{ author.name }}</h3>
+              {{ author.bio }}
+            </div>
+          </div>
+        {% endfor %}
+      </article>
+    </div>
+  </div>
+{% endblock content %}
