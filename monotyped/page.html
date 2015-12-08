@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <article class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    <div class="content">
+      {{ page.content }}
+    </div>
+  </article>
+
+{% endblock content %}

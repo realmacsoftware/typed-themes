@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="site-info">
+    <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+    <div class="site-description">{{ site.description }}</div>
+  </div>
+
+  {% if site.navigation %}
+    <a href="#" class="menu-toggle"><i class="fa fa-bars"></i></a>
+    <nav class="site-navigation">
+      <ul>
+        {% for item in site.navigation %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</header>
