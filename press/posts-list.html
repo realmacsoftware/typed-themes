@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="main__inner posts-list">
+    {% for post in posts %}
+      <article class="posts-list__post" {% if post.images %}style="background-image: url('{{ post.images[0].url }}')"{% endif %}>
+        <div class="overlay"></div>
+
+        <div class="post-meta">
+          <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d') }}</time>
+          <span class="post-tags">{{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}</span>
+        </div>
+
+        <div class="clearfix"></div>
+      </article>
+    {% else %}
+      <p>No posts</p>
+    {% endfor %}
+
+    {% if pagination.has_pages %}
+      <nav class="site-pagination">
+        <ul class="pagination">
+          {% if pagination.has_prev %}
+            <li>
+              <a href="{{ pagination.prev }}" class="btn btn-secondary" aria-label="Previous">&#10094; Previous</a>
+            </li>
+          {% else %}
+            <li>
+              <a class="btn btn-secondary btn-disabled" aria-label="Previous">&#10094; Previous</a>
+            </li>
+          {% endif %}
+          <li>Page {{ pagination.page_number }} of {{ pagination.pages_count }}</li>
+          {% if pagination.has_next %}
+            <li>
+              <a href="{{ pagination.next }}" class="btn btn-secondary" aria-label="Next">Next &#10095;</a>
+            </li>
+          {% else %}
+            <li>
+              <a class="btn btn-secondary btn-disabled" aria-label="Next">Next &#10095;</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+{% endblock content %}

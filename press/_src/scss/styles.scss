@@ -1,0 +1,857 @@
+/*
+   ------------------------------------
+   Imports
+   ------------------------------------
+*/
+
+// Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+
+// Components
+@import "bootstrap/animation";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
+@import "bootstrap/labels";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+@import "bootstrap/progress";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/responsive-embed";
+@import "bootstrap/close";
+
+// Components w/ JavaScript
+// @import "bootstrap/modal";
+// @import "bootstrap/tooltip";
+// @import "bootstrap/popover";
+// @import "bootstrap/carousel";
+
+// Utility classes
+@import "bootstrap/utilities";
+@import "bootstrap/utilities-background";
+@import "bootstrap/utilities-spacing";
+@import "bootstrap/utilities-responsive";
+
+// Font awesome
+@import "fontawesome/font-awesome.scss";
+
+/*
+   ------------------------------------
+   Scaffolding
+   ------------------------------------
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  @include media-breakpoint-down(lg) {
+    font-size: 16px;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 15px;
+  }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+input,
+textarea {
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+  margin: $spacer*.5 auto $spacer*1.5 auto;
+  @include box-shadow(0 1px 1px rgba($headings-color, .08));
+}
+
+.fluid-width-video-wrapper {
+  margin: $spacer*1.5 auto $spacer*1.5 auto;
+}
+
+a {
+  transition: color 0.1s ease-in-out;
+}
+
+li {
+  margin-bottom: $spacer/4;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+/*
+   ------------------------------------
+   Header
+   ------------------------------------
+*/
+
+.site-header {
+  background: #fff;
+  @include box-shadow(0 1px 1px rgba($headings-color, .08));
+  z-index: 1100;
+  position: relative;
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+  }
+}
+
+.site-header__inner {
+  @extend .container-fluid;
+}
+
+.branding {
+  float: left;
+  margin: $spacer*2 0 $spacer*2 $spacer*3;
+
+  @include media-breakpoint-down(md) {
+    margin-top: 0;
+    float: none;
+    display: inline-block;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-bottom: $spacer*2;
+  }
+
+  h1 {
+    @extend h2;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+    @include media-breakpoint-down(md) {
+      margin: $spacer*2 0 0 0;
+    }
+  }
+
+  a {
+    color: $headings-color;
+
+    @include hover-focus {
+      color: $headings-color;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Navigation
+   ------------------------------------
+*/
+
+.navigation {
+  font-family: $font-family-sans-serif;
+  margin: $spacer*2.5 $spacer*3 0 0;
+  float: right;
+  text-transform: uppercase;
+
+  ul {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    @extend small;
+  }
+
+  @include media-breakpoint-down(sm) {
+    float: none;
+    margin: 0;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .nav-collapse {
+    li {
+      float: left;
+      margin: 0 0 0 $spacer;
+    }
+
+    &.closed {
+      max-height: none;
+    }
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .nav-collapse {
+    clip: rect(0 0 0 0);
+    max-height: 0;
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    zoom: 1;
+
+    &.opened {
+      max-height: 9999px;
+    }
+
+    ul {
+      padding-bottom: $spacer*2;
+    }
+
+    li {
+      float: none;
+      margin: 0 0 $spacer/2 0;
+      display: block;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .nav-toggle {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin-top: $spacer;
+  }
+}
+
+/*
+   ------------------------------------
+   Main
+   ------------------------------------
+*/
+
+.main {
+  @extend .container-fluid;
+}
+
+.main__inner {
+  @extend .row;
+}
+
+/*
+   ------------------------------------
+   Pages
+   ------------------------------------
+*/
+
+.page-content {
+  @extend .col-lg-8;
+  @extend .col-lg-push-2;
+  @extend .col-xs-12;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*2;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-bottom: $spacer;
+  }
+
+  a {
+    border-bottom: 1px solid $link-color;
+
+    @include hover-focus {
+      color: $link-color;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+}
+
+.page__intro {
+  position: relative;
+  background-position: center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: $spacer*4;
+
+  @include media-breakpoint-down(md) {
+    height: auto !important;
+    @extend .clearfix;
+    margin-bottom: $spacer*2;
+  }
+
+  .page-title {
+    font-size: $font-size-h1*1.5;
+    @extend .col-lg-8;
+    @extend .col-lg-offset-2;
+    @extend .col-md-10;
+    @extend .col-md-offset-1;
+    @extend .col-xs-12;
+    text-align: center;
+    margin-top: $spacer*8;
+    margin-bottom: $spacer*8;
+
+    @include media-breakpoint-down(md) {
+      margin-top: $spacer*4;
+      margin-bottom: $spacer*4;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-top: $spacer*2;
+      margin-bottom: $spacer*2;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Posts
+   ------------------------------------
+*/
+
+.posts-list__post {
+  @extend .col-lg-6;
+  @extend .col-xs-12;
+  background-position: center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: $spacer*4;
+  text-align: center;
+
+  @include media-breakpoint-down(lg) {
+    padding: $spacer*3 $spacer/2;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 4px;
+    // height: auto !important;
+  }
+
+  &:first-of-type {
+    @extend .col-sm-12;
+    padding: $spacer*20 0 $spacer*4 0;
+    border-left: none !important;
+    margin-bottom: 4px;
+
+    @include media-breakpoint-down(lg) {
+      padding: $spacer*8 $spacer/2;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding: $spacer*4 $spacer/2;
+    }
+
+    @include media-breakpoint-down(xs) {
+      padding: $spacer*2 $spacer/2;
+    }
+
+    .post-title {
+      font-size: $font-size-h1*1.5;
+
+      @include media-breakpoint-down(md) {
+        font-size: $font-size-h1;
+      }
+    }
+
+    .post-meta {
+      @extend .col-lg-8;
+      @extend .col-lg-offset-2;
+      @extend .col-md-10;
+      @extend .col-md-offset-1;
+      @extend .col-xs-12;
+    }
+  }
+
+  &:nth-of-type(even) {
+    border-right: 2px solid #fff;
+
+    @include media-breakpoint-down(md) {
+      border-right: none;
+    }
+  }
+
+  &:nth-of-type(odd) {
+    border-left: 2px solid #fff;
+
+    @include media-breakpoint-down(md) {
+      border-left: none;
+    }
+  }
+
+  &:nth-of-type(2),
+  &:nth-of-type(3) {
+    margin-bottom: 4px;
+  }
+}
+
+.post-single__intro {
+  position: relative;
+  background-position: center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: $spacer*4;
+
+  @include media-breakpoint-down(md) {
+    height: auto !important;
+    @extend .clearfix;
+    margin-bottom: $spacer*2;
+  }
+
+  .post-title {
+    font-size: $font-size-h1*1.5;
+  }
+
+  .post-meta {
+    @extend .col-lg-8;
+    @extend .col-lg-offset-2;
+    @extend .col-md-10;
+    @extend .col-md-offset-1;
+    @extend .col-xs-12;
+    position: absolute;
+    bottom: $spacer*4;
+    text-align: center;
+
+    @include media-breakpoint-down(md) {
+      position: relative !important;
+      margin-top: $spacer*4;
+      margin-bottom: $spacer*4;
+      bottom: 0;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-top: $spacer*2;
+      margin-bottom: $spacer*2;
+    }
+  }
+}
+
+.post-content {
+  @extend .col-lg-8;
+  @extend .col-lg-push-2;
+  @extend .col-xs-12;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*2;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-bottom: $spacer;
+  }
+
+  a {
+    border-bottom: 1px solid $link-color;
+
+    @include hover-focus {
+      color: $link-color;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+}
+
+.post-title,
+.page-title {
+  position: relative;
+  font-family: $font-family-title;
+  font-weight: 400;
+  z-index: 900;
+  letter-spacing: -1px;
+  text-shadow: 0 1px 5px rgba($headings-color, .08);
+  color: #fff;
+
+  a {
+    color: #fff;
+
+    @include hover-focus {
+      color: rgba(#fff, .6);
+    }
+  }
+}
+
+.post-meta {
+  position: relative;
+  text-shadow: 0 1px 5px rgba($headings-color, .08);
+  color: rgba(#fff, .6);
+  z-index: 900;
+
+  time,
+  .post-tags,
+  span {
+    font-family: $font-family-sans-serif;
+    @extend small;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #fff;
+    box-shadow: none;
+
+    @include hover-focus {
+      color: rgba(#fff, .8);
+    }
+  }
+}
+
+.post-share {
+  @extend .col-lg-2;
+  @extend .col-lg-offset-0;
+  @extend .col-lg-pull-8;
+  @extend .col-md-10;
+  @extend .col-md-offset-1;
+  @extend .col-xs-12;
+  font-family: $font-family-sans-serif;
+  margin-top: 8px;
+
+  @include media-breakpoint-down(md) {
+    margin-top: -$spacer;
+    margin-bottom: $spacer;
+  }
+
+  ul {
+    @extend .row;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    @extend .col-lg-12;
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+    margin-bottom: $spacer;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: $spacer/2;
+    }
+
+    @include media-breakpoint-down(xs) {
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .fa {
+    margin-right: 0;
+  }
+}
+
+.read-more {
+  @extend small;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  @include hover-focus {
+    color: rgba(#fff, .6);
+  }
+}
+
+/*
+   ------------------------------------
+   Errors
+   ------------------------------------
+*/
+
+.post-single.error .post-single__intro {
+  margin-bottom: 0 !important;
+  background-image: url("../img/404.jpeg");
+}
+
+.error-footer + .site-footer {
+  margin-top: 0;
+}
+
+/*
+   ------------------------------------
+   Gradients
+   ------------------------------------
+*/
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .8;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.grad-1  { @include gradient-directional(#348F50, #56B4D3, $deg: 45deg); }
+.grad-2  { @include gradient-directional(#3CA55C, #B5AC49, $deg: 45deg); }
+.grad-3  { @include gradient-directional(#003973, #E5E5BE, $deg: 45deg); }
+.grad-4  { @include gradient-directional(#E55D87, #5FC3E4, $deg: 45deg); }
+.grad-5  { @include gradient-directional(#403B4A, #E7E9BB, $deg: 45deg); }
+.grad-6  { @include gradient-directional(#F09819, #EDDE5D, $deg: 45deg); }
+.grad-7  { @include gradient-directional(#FF512F, #DD2476, $deg: 45deg); }
+.grad-8  { @include gradient-directional(#AA076B, #61045F, $deg: 45deg); }
+.grad-9  { @include gradient-directional(#1A2980, #26D0CE, $deg: 45deg); }
+.grad-10  { @include gradient-directional(#FF512F, #F09819, $deg: 45deg); }
+.grad-11  { @include gradient-directional(#1D2B64, #F8CDDA, $deg: 45deg); }
+.grad-12  { @include gradient-directional(#4CB8C4, #3CD3AD, $deg: 45deg); }
+.grad-13  { @include gradient-directional(#DD5E89, #F7BB97, $deg: 45deg); }
+.grad-14  { @include gradient-directional(#EB3349, #F45C43, $deg: 45deg); }
+.grad-15  { @include gradient-directional(#1D976C, #93F9B9, $deg: 45deg); }
+.grad-16  { @include gradient-directional(#FF8008, #FFC837, $deg: 45deg); }
+.grad-17  { @include gradient-directional(#16222A, #3A6073, $deg: 45deg); }
+.grad-18  { @include gradient-directional(#1F1C2C, #928DAB, $deg: 45deg); }
+.grad-19  { @include gradient-directional(#614385, #516395, $deg: 45deg); }
+.grad-20  { @include gradient-directional(#4776E6, #8E54E9, $deg: 45deg); }
+.grad-21  { @include gradient-directional(#085078, #85D8CE, $deg: 45deg); }
+.grad-22  { @include gradient-directional(#2BC0E4, #EAECC6, $deg: 45deg); }
+.grad-23  { @include gradient-directional(#134E5E, #71B280, $deg: 45deg); }
+.grad-24  { @include gradient-directional(#5C258D, #4389A2, $deg: 45deg); }
+.grad-25  { @include gradient-directional(#757F9A, #D7DDE8, $deg: 45deg); }
+.grad-26  { @include gradient-directional(#232526, #414345, $deg: 45deg); }
+.grad-27  { @include gradient-directional(#1CD8D2, #93EDC7, $deg: 45deg); }
+.grad-28  { @include gradient-directional(#3D7EAA, #FFE47A, $deg: 45deg); }
+.grad-29  { @include gradient-directional(#283048, #859398, $deg: 45deg); }
+.grad-30  { @include gradient-directional(#24C6DC, #514A9D, $deg: 45deg); }
+.grad-31  { @include gradient-directional(#DC2424, #4A569D, $deg: 45deg); }
+.grad-32  { @include gradient-directional(#ED4264, #FFEDBC, $deg: 45deg); }
+.grad-33  { @include gradient-directional(#DAE2F8, #D6A4A4, $deg: 45deg); }
+.grad-35  { @include gradient-directional(#7474BF, #348AC7, $deg: 45deg); }
+.grad-36  { @include gradient-directional(#EC6F66, #F3A183, $deg: 45deg); }
+.grad-37  { @include gradient-directional(#5f2c82, #49a09d, $deg: 45deg); }
+.grad-38  { @include gradient-directional(#C04848, #480048, $deg: 45deg); }
+.grad-39  { @include gradient-directional(#e43a15, #e65245, $deg: 45deg); }
+.grad-40  { @include gradient-directional(#414d0b, #727a17, $deg: 45deg); }
+.grad-41  { @include gradient-directional(#FC354C, #0ABFBC, $deg: 45deg); }
+.grad-42  { @include gradient-directional(#4b6cb7, #182848, $deg: 45deg); }
+.grad-43  { @include gradient-directional(#f857a6, #ff5858, $deg: 45deg); }
+.grad-44  { @include gradient-directional(#a73737, #7a2828, $deg: 45deg); }
+.grad-45  { @include gradient-directional(#d53369, #cbad6d, $deg: 45deg); }
+.grad-46  { @include gradient-directional(#e9d362, #333333, $deg: 45deg); }
+.grad-47  { @include gradient-directional(#DE6262, #FFB88C, $deg: 45deg); }
+.grad-48  { @include gradient-directional(#666600, #999966, $deg: 45deg); }
+.grad-51  { @include gradient-directional(#c21500, #ffc500, $deg: 45deg); }
+.grad-52  { @include gradient-directional(#215f00, #e4e4d9, $deg: 45deg); }
+.grad-53  { @include gradient-directional(#50C9C3, #96DEDA, $deg: 45deg); }
+.grad-54  { @include gradient-directional(#616161, #9bc5c3, $deg: 45deg); }
+.grad-55  { @include gradient-directional(#ddd6f3, #faaca8, $deg: 45deg); }
+.grad-56  { @include gradient-directional(#5D4157, #A8CABA, $deg: 45deg); }
+.grad-57  { @include gradient-directional(#E6DADA, #274046, $deg: 45deg); }
+.grad-58  { @include gradient-directional(#DAD299, #B0DAB9, $deg: 45deg); }
+.grad-59  { @include gradient-directional(#D3959B, #BFE6BA, $deg: 45deg); }
+.grad-60  { @include gradient-directional(#00d2ff, #3a7bd5, $deg: 45deg); }
+.grad-61  { @include gradient-directional(#870000, #190A05, $deg: 45deg); }
+.grad-62  { @include gradient-directional(#B993D6, #8CA6DB, $deg: 45deg); }
+.grad-63  { @include gradient-directional(#649173, #DBD5A4, $deg: 45deg); }
+.grad-64  { @include gradient-directional(#C9FFBF, #FFAFBD, $deg: 45deg); }
+.grad-65  { @include gradient-directional(#606c88, #3f4c6b, $deg: 45deg); }
+.grad-66  { @include gradient-directional(#000000, #53346D, $deg: 45deg); }
+.grad-67  { @include gradient-directional(#FBD3E9, #BB377D, $deg: 45deg); }
+.grad-68  { @include gradient-directional(#ADD100, #7B920A, $deg: 45deg); }
+.grad-69  { @include gradient-directional(#FF4E50, #F9D423, $deg: 45deg); }
+.grad-70  { @include gradient-directional(#F0C27B, #4B1248, $deg: 45deg); }
+.grad-71  { @include gradient-directional(#000000, #e74c3c, $deg: 45deg); }
+.grad-72  { @include gradient-directional(#AAFFA9, #11FFBD, $deg: 45deg); }
+.grad-73  { @include gradient-directional(#B3FFAB, #12FFF7, $deg: 45deg); }
+.grad-74  { @include gradient-directional(#780206, #061161, $deg: 45deg); }
+.grad-75  { @include gradient-directional(#9D50BB, #6E48AA, $deg: 45deg); }
+.grad-76  { @include gradient-directional(#556270, #FF6B6B, $deg: 45deg); }
+.grad-77  { @include gradient-directional(#70e1f5, #ffd194, $deg: 45deg); }
+.grad-78  { @include gradient-directional(#00c6ff, #0072ff, $deg: 45deg); }
+.grad-79  { @include gradient-directional(#fe8c00, #f83600, $deg: 45deg); }
+.grad-80  { @include gradient-directional(#52c234, #061700, $deg: 45deg); }
+.grad-81  { @include gradient-directional(#485563, #29323c, $deg: 45deg); }
+.grad-82  { @include gradient-directional(#83a4d4, #b6fbff, $deg: 45deg); }
+.grad-85  { @include gradient-directional(#73C8A9, #373B44, $deg: 45deg); }
+.grad-86  { @include gradient-directional(#D38312, #A83279, $deg: 45deg); }
+.grad-87  { @include gradient-directional(#1e130c, #9a8478, $deg: 45deg); }
+.grad-88  { @include gradient-directional(#948E99, #2E1437, $deg: 45deg); }
+.grad-89  { @include gradient-directional(#360033, #0b8793, $deg: 45deg); }
+.grad-90  { @include gradient-directional(#FFA17F, #00223E, $deg: 45deg); }
+.grad-91  { @include gradient-directional(#43cea2, #185a9d, $deg: 45deg); }
+.grad-92  { @include gradient-directional(#ffb347, #ffcc33, $deg: 45deg); }
+.grad-93  { @include gradient-directional(#6441A5, #2a0845, $deg: 45deg); }
+.grad-94  { @include gradient-directional(#517fa4, #243949, $deg: 45deg); }
+.grad-95  { @include gradient-directional(#ff0084, #33001b, $deg: 45deg); }
+.grad-96  { @include gradient-directional(#00bf8f, #001510, $deg: 45deg); }
+.grad-98  { @include gradient-directional(#7b4397, #dc2430, $deg: 45deg); }
+.grad-99  { @include gradient-directional(#D1913C, #FFD194, $deg: 45deg); }
+.grad-100 { @include gradient-directional(#F1F2B5, #135058, $deg: 45deg); }
+.grad-101 { @include gradient-directional(#525252, #3d72b4, $deg: 45deg); }
+.grad-102 { @include gradient-directional(#ee9ca7, #ffdde1, $deg: 45deg); }
+.grad-103 { @include gradient-directional(#304352, #d7d2cc, $deg: 45deg); }
+.grad-104 { @include gradient-directional(#fc00ff, #00dbde, $deg: 45deg); }
+.grad-105 { @include gradient-directional(#e53935, #e35d5b, $deg: 45deg); }
+.grad-106 { @include gradient-directional(#005C97, #363795, $deg: 45deg); }
+.grad-107 { @include gradient-directional(#f46b45, #eea849, $deg: 45deg); }
+.grad-108 { @include gradient-directional(#00C9FF, #92FE9D, $deg: 45deg); }
+.grad-109 { @include gradient-directional(#673AB7, #512DA8, $deg: 45deg); }
+
+/*
+   ------------------------------------
+   Author bio
+   ------------------------------------
+*/
+
+.post-authors {
+  @extend .col-lg-8;
+  @extend .col-lg-offset-2;
+  @extend .col-xs-12;
+  font-family: $font-family-sans-serif;
+  margin-top: $spacer;
+
+  .author {
+    @extend .clearfix;
+    border-top: 2px solid $hr-border-color;
+    padding-top: $spacer*2;
+    margin-left: $grid-gutter-width/2;
+    margin-right: $grid-gutter-width/2;
+  }
+
+  p {
+    color: $gray;
+  }
+}
+
+.author-avatar {
+  width: $spacer*4;
+  float: left;
+  box-shadow: none;
+  margin-right: $spacer;
+
+  img {
+    margin: 0;
+  }
+}
+
+.author-bio {
+}
+
+/*
+   ------------------------------------
+   Pagination
+   ------------------------------------
+*/
+
+.site-pagination {
+  @extend .col-lg-8;
+  @extend .col-lg-offset-2;
+  @extend .col-xs-12;
+  text-align: center;
+  padding-top: $spacer*2;
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    display: inline-block;
+  }
+
+  li {
+    float: left;
+    margin: 0 $spacer/2;
+    display: inline-block;
+
+    @include media-breakpoint-down(xs) {
+      float: none;
+      display: block;
+    }
+
+    &:nth-of-type(2) {
+      font-size: 60%;
+      font-weight: 700;
+      font-family: $font-family-sans-serif;
+      text-transform: uppercase;
+      color: $text-muted;
+      margin-top: 7px;
+
+      @include media-breakpoint-down(xs) {
+        margin-top: $spacer/4;
+        margin-bottom: $spacer/4;
+      }
+    }
+  }
+
+  .btn {
+    width: 110px;
+  }
+}
+
+/*
+   ------------------------------------
+   Tag filter
+   ------------------------------------
+*/
+
+
+
+/*
+   ------------------------------------
+   Footer
+   ------------------------------------
+*/
+
+.site-footer {
+  background: $headings-color;
+  color: rgba(#fff, .6);
+  margin-top: $spacer*2;
+  padding-top: $spacer*2;
+  padding-bottom: $spacer*2;
+  text-align: center;
+  @extend small;
+  $shadow: inset 0 1px 1px rgba($headings-color, .08);
+  @include box-shadow($shadow);
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: #fff;
+
+    @include hover-focus {
+      color: rgba(#fff, .8);
+    }
+  }
+}
+
+.site-footer__inner {
+  @extend .container;
+
+  p {
+    @extend .col-xs-12;
+  }
+}

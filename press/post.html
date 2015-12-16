@@ -1,0 +1,78 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    <meta property="og:image" content="{{ post.images[0].url }}" />
+  {% endif %}
+  <meta property="og:url" content="{{ post.url|absolute_url }}" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          "{{ post.images[0].url }}"
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ post.content|striptags }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="main__inner post-single">
+    <article class="post-single__post">
+      <div class="post-single__intro" {% if post.images %}style="background-image: url('{{ post.images[0].url }}')"{% endif %}>
+        <div class="overlay"></div>
+        <div class="post-meta">
+          <h1 class="post-title">{{ post.title }}</h1>
+          <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d') }}</time>
+          <span class="post-tags">{{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}</span>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="post-content">
+            {{ post.content }}
+            {{ site.code_post }}
+          </div>
+
+          <div class="post-share">
+            <ul>
+              <li><a href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ post.url|absolute_url }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a></li>
+              <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ post.url|absolute_url }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title }}" class="btn btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.url|absolute_url }}&title={{ post.title }}&summary={{ post.excerpt }}&source={{ site.url }}" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div class="post-authors">
+            <div class="row">
+              {% for author in post.authors %}
+                <div class="author">
+                  <div class="author-avatar">
+                    <img src="{{ author.avatar }}">
+                  </div>
+                  <div class="author-bio">
+                    <h6>Written by {{ author.name }}</h6>
+                    {{ author.bio }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+{% endblock content %}
