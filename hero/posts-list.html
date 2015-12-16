@@ -1,0 +1,63 @@
+{% extends 'partials/base.html' %}
+
+{% block contentclass %}{{ super() }} class="post-list"{% endblock contentclass %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <div class="row">
+      <div class="entry-list">
+        {% if filters.tags %}
+          <div class="tag-filter">
+            <h2>{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h2>
+          </div>
+          <div class="clearfix"></div>
+        {% endif %}
+
+        {% for post in posts %}
+          <article class="entry">
+            {% if post.images %}
+              <a class="entry-banner" href="{{ post.url }}" rel="bookmark" style="background-image: url('{{ post.images[0].url }}')"></a>
+            {% endif %}
+
+            <header class="entry-header">
+              <h2 class="entry-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h2>
+
+              <div class="entry-meta">
+                {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
+                {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}<time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time>
+              </div>
+            </header>
+
+            <div class="entry-content">
+              {{ post.excerpt }}
+            </div>
+
+            <footer class="entry-footer">
+              <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+            </footer>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% if pagination.has_pages %}
+    <nav class="site-pagination">
+      <ul>
+        {% if pagination.has_prev %}
+          <li class="pagination-prev">
+            <a href="{{ pagination.prev }}" aria-label="Previous"><i class="fa fa-caret-left"></i></a>
+          </li>
+        {% endif %}
+
+        {% if pagination.has_next %}
+          <li class="pagination-next">
+            <a href="{{ pagination.next }}" aria-label="Next"><i class="fa fa-caret-right"></i></a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+{% endblock content %}

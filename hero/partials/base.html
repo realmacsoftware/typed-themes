@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1 maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ meta.title }} &middot; {{ site.title }}</title>
+
+    <meta name="description" content="{{ meta.description }}">
+    <meta property="og:description" content="{{ meta.description }}">
+
+    <meta property="twitter:description" content="{{ meta.description }}">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="{{ meta.title }}">
+    <meta property="twitter:domain" content="{{ site.url }}">
+
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{{ meta.title }}">
+
+    {% block meta %}
+    {% endblock meta %}
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="canonical" href="{{ site.url }}">
+
+    <link rel="icon" href="{% asset 'img/icon.png' %}">
+    <link rel="mask-icon" href="{% asset 'img/mask-icon.svg' %}" color="#5AADED">
+    <link rel="apple-touch-icon-precomposed" href="{% asset 'img/apple-touch-icon-precomposed.png' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400,100">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700">
+    <link rel="stylesheet" type="text/css" href="{% asset 'css/styles.css' %}">
+
+    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    {{ site.code_head }}
+  </head>
+  <body {% block contentclass %}{% endblock contentclass %}>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+    <div class="wrapper">
+      <header class="site-header" role="banner">
+        {% include 'partials/header.html' %}
+        {% include 'partials/navigation.html' %}
+      </header>
+
+      <main id="content" class="main" role="main">
+        {% block content %}
+        {% endblock content %}
+      </main>
+    </div>
+
+    {% include 'partials/footer.html' %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="{% asset 'js/main.js' %}"></script>
+
+    {{ site.code_body }}
+  </body>
+</html>

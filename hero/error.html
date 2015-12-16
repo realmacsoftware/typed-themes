@@ -1,0 +1,23 @@
+{% extends 'partials/base.html' %}
+
+{% block contentclass %}{{ super() }} class="page"{% endblock contentclass %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="entry-single">
+    <div class="container">
+      <div class="row">
+        <article class="entry">
+          <header class="entry-header">
+            <h1 class="entry-title">{{ error.title }} ({{ error.status_code }})</h1>
+          </header>
+
+          <div class="entry-content error-message">
+            <p>{{ error.message }}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

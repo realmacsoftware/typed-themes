@@ -1,0 +1,90 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    <meta property="og:image" content="{{ post.images[0].url }}" />
+  {% endif %}
+  <meta property="og:url" content="{{ post.url|absolute_url }}" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          "{{ post.images[0].url }}"
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ meta.description }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block contentclass %}{{ super() }} class="post-single"{% endblock contentclass %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="entry-single">
+    {% if post.images %}
+      <div class="entry-banner">
+        <img src="{{ post.images[0].url }}" alt="Banner image">
+      </div>
+    {% endif %}
+
+    <div class="container">
+      <div class="row">
+        <article class="entry">
+          <header class="entry-header">
+            <h1 class="entry-title">{{ post.title }}</h1>
+
+            <div class="entry-meta">
+              {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
+              {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}<time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time>
+            </div>
+          </header>
+
+          <div class="entry-content">
+            {{ post.content }}
+
+            <p class="post-tags">
+              {{ post.tags|tags(prefix='<i class="fa fa-tag"></i>', last_separator=' and ') }}
+            </p>
+
+            <div class="share-button">
+              <a href="https://twitter.com/intent/tweet?text={{ post.title}}&url={{ post.url|absolute_url }}" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i>Share this article</a>
+            </div>
+
+            {{ site.code_post }}
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <footer class="entry-authors">
+      <div class="container">
+        <div class="row">
+          {% for author in post.authors %}
+            <div class="author">
+              <div class="author-avatar">
+                <img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">
+              </div>
+
+              <div class="author-bio">
+                <h3>{{ author.name }}</h3>
+                {{ author.bio }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </footer>
+  </div>
+{% endblock content %}

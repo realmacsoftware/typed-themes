@@ -1,0 +1,16 @@
+<div class="navigation-controls">
+  <a class="nav-toggle" id="nav-toggle"><i class="fa fa-bars"></i></a>
+</div>
+
+<div class="clearfix hidden-lg-up"></div>
+
+{% if site.navigation %}
+  <nav class="navigation" role="navigation">
+    <ul>
+      <li><a href="{{ site.url }}"><i class="fa fa-home"></i></a></li>
+      {% for item in site.navigation %}
+        <li><a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
