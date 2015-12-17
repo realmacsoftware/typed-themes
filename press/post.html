@@ -49,10 +49,10 @@
 
           <div class="post-share">
             <ul>
-              <li><a href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ post.url|absolute_url }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a></li>
+              <li><a href="https://twitter.com/intent/tweet?text={{ post.title|striptags|e }}&url={{ post.url|absolute_url }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a></li>
               <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ post.url|absolute_url }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-              <li><a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title }}" class="btn btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a></li>
-              <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.url|absolute_url }}&title={{ post.title }}&summary={{ post.excerpt }}&source={{ site.url }}" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title|striptags|e }}" class="btn btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.url|absolute_url }}&title={{ post.title|striptags|e }}&summary={{ post.excerpt|striptags|e }}&source={{ site.url }}" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
             </ul>
           </div>
 
