@@ -22,7 +22,7 @@
       {% endif %}
       "datePublished": "{{ post.published_at|date(isoformat=True) }}",
       "description": "{{ meta.description }}",
-      "articleBody": "{{ post.content|striptags }}"
+      "articleBody": "{{ post.content|striptags|e }}"
     }
   </script>
 {% endblock meta %}
