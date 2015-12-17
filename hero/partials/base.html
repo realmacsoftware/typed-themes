@@ -2,31 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1 maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ meta.title }} &middot; {{ site.title }}</title>
 
-    <meta name="description" content="{{ meta.description }}">
-    <meta property="og:description" content="{{ meta.description }}">
-
-    <meta property="twitter:description" content="{{ meta.description }}">
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="{{ meta.title }}">
-    <meta property="twitter:domain" content="{{ site.url }}">
-
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:title" content="{{ meta.title }}">
-
     {% block meta %}
-    {% endblock meta %}
+      <meta name="description" content="{{ meta.description }}">
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
+      <meta property="og:description" content="{{ meta.description }}">
+      <meta property="og:site_name" content="{{ site.title }}">
+      <meta property="og:title" content="{{ meta.title }}">
+
+      <meta property="twitter:card" content="summary">
+      <meta property="twitter:description" content="{{ meta.description }}">
+      <meta property="twitter:domain" content="{{ site.url }}">
+      <meta property="twitter:title" content="{{ meta.title }}">
+    {% endblock meta %}
 
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
     <link rel="canonical" href="{{ site.url }}">
+
+    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
 
     <link rel="icon" href="{% asset 'img/icon.png' %}">
     <link rel="mask-icon" href="{% asset 'img/mask-icon.svg' %}" color="#5AADED">
@@ -34,9 +33,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400,100">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700">
-    <link rel="stylesheet" type="text/css" href="{% asset 'css/styles.css' %}">
-
-    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
+    <link rel="stylesheet" href="{% asset 'css/styles.css' %}">
 
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>

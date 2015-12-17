@@ -3,16 +3,16 @@
 {% block meta %}
   {{ super() }}
 
-  {% if post.images %}
-    <meta name="twitter:image" content="{{ post.images[0].url }}">
-    <meta property="og:image" content="{{ post.images[0].url }}" />
-  {% endif %}
   <meta property="og:url" content="{{ post.url|absolute_url }}" />
+  {% if post.images %}
+    <meta property="og:image" content="{{ post.images[0].url }}" />
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+  {% endif %}
 
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
-      "@type": "NewsArticle",
+      "@type": "BlogPosting",
       "headline": "{{ meta.title }}",
       "alternativeHeadline": "{{ meta.title }}",
       {% if post.images %}
@@ -22,7 +22,7 @@
       {% endif %}
       "datePublished": "{{ post.published_at|date(isoformat=True) }}",
       "description": "{{ meta.description }}",
-      "articleBody": "{{ meta.description }}"
+      "articleBody": "{{ post.content|striptags }}"
     }
   </script>
 {% endblock meta %}

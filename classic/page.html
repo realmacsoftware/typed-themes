@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ page.url|absolute_url }}" />
+  {% if page.images %}
+    <meta property="og:image" content="{{ page.images[0].url }}" />
+    <meta name="twitter:image" content="{{ page.images[0].url }}">
+  {% endif %}
+{% endblock meta %}
+
 {% block content %}
   {{ super() }}
 

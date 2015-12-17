@@ -3,11 +3,11 @@
 {% block meta %}
   {{ super() }}
 
-  {% if page.images %}
-    <meta name="twitter:image" content="{{ page.images[0].url }}">
-    <meta property="og:image" content="{{ page.images[0].url }}" />
-  {% endif %}
   <meta property="og:url" content="{{ page.url|absolute_url }}" />
+  {% if page.images %}
+    <meta property="og:image" content="{{ page.images[0].url }}" />
+    <meta name="twitter:image" content="{{ page.images[0].url }}">
+  {% endif %}
 {% endblock meta %}
 
 {% block contentclass %}{{ super() }} class="page"{% endblock contentclass %}
