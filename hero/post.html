@@ -59,7 +59,7 @@
             </p>
 
             <div class="share-button">
-              <a href="https://twitter.com/intent/tweet?text={{ post.title}}&url={{ post.url|absolute_url }}" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i>Share this article</a>
+              <a href="https://twitter.com/intent/tweet?text={{ post.title|striptags|e }}&url={{ post.url|absolute_url }}" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i>Share this article</a>
             </div>
 
             {{ site.code_post }}
