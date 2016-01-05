@@ -4,9 +4,15 @@
   {{ super() }}
 
   <meta property="og:url" content="{{ post.url|absolute_url }}" />
+  <meta property="og:type" content="article"/>
+
   {% if post.images %}
-    <meta property="og:image" content="{{ post.images[0].url }}" />
-    <meta name="twitter:image" content="{{ post.images[0].url }}">
+  
+  <meta name="twitter:image" content="{{ post.images[0].url }}">
+  {% for image in post.images %}
+  <meta property="og:image" content="{{ image.url }}" />
+  {% endfor %}
+  
   {% endif %}
 
   <script type="application/ld+json">
@@ -17,7 +23,13 @@
       "alternativeHeadline": "{{ meta.title }}",
       {% if post.images %}
         "image": [
-          "{{ post.images[0].url }}"
+        {% for image in post.images %}
+        {% if loop.last %}
+          {{ image.url }}
+        {% else %}
+          {{ image.url }},
+        {% endif %}
+      {% endfor %}
         ],
       {% endif %}
       "datePublished": "{{ post.published_at|date(isoformat=True) }}",

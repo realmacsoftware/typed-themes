@@ -4,9 +4,13 @@
   {{ super() }}
 
   <meta property="og:url" content="{{ post.url|absolute_url }}" />
+  <meta property="og:type" content="article"/>
+
   {% if post.images %}
-    <meta property="og:image" content="{{ post.images[0].url }}" />
-    <meta name="twitter:image" content="{{ post.images[0].url }}">
+  <meta name="twitter:image" content="{{ post.images[0].url }}">
+  {% for image in post.images %}
+  <meta property="og:image" content="{{ image.url }}" />
+  {% endfor %}
   {% endif %}
 
   <script type="application/ld+json">
