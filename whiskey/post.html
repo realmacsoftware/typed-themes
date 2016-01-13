@@ -1,0 +1,83 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ post.url|absolute_url }}">
+  <meta property="og:type" content="article">
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    {% for image in post.images %}
+      <meta property="og:image" content="{{ image.url }}">
+    {% endfor %}
+  {% endif %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          "{{ post.images[0].url }}"
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ post.content|striptags|e }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <main class="main">
+      <div class="main__inner">
+        <article class="post post--single">
+          <div class="post__inner">
+            <h1 class="post-title">{{ post.title }}</h1>
+
+            <div class="post-extras__date">
+              <i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+              <i class="fa fa-user"></i>{{ post.authors|authors(last_separator=' and ') }}
+            </div>
+
+            <div class="content">
+              {{ post.content }}
+
+              {% if post.tags %}
+                <p class="post-tags"><i class="fa fa-tag"></i>{{ post.tags|tags(last_separator=' and ') }}</p>
+              {% endif %}
+
+              {% if post.has_prev_post  %}
+                <p class="next-post"><i class="fa fa-arrow-circle-right"></i><a href="{{ post.prev_post.url }}">Read “{{ post.prev_post.title }}” next</a></p>
+              {% endif %}
+
+              <p class="post-share"><i class="fa fa-retweet"></i><a href="https://www.facebook.com/sharer/sharer.php?u={{ post.url|absolute_url }}">Facebook</a>, <a href="https://twitter.com/intent/tweet?text={{ post.title|striptags|e }}&url={{ post.url|absolute_url }}">Twitter</a>, <a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title|striptags|e }}">Pinterest</a></p>
+              {{ site.code_post }}
+            </div>
+          </div>
+        </article>
+
+        {% for author in post.authors %}
+          <footer class="post-footer">
+            <div class="post-footer__inner">
+              <div class="author-avatar">
+                <img src="{{ author.avatar }}" alt="{{ author.name }}">
+              </div>
+
+              <div class="author-bio">
+                <h3>{{ author.name }}</h3>
+                {{ author.bio }}
+              </div>
+            </div>
+          </footer>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+{% endblock content %}

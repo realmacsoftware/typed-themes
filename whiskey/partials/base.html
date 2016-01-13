@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ meta.title }} &middot; {{ site.title }}</title>
+
+    {% block meta %}
+      <meta name="description" content="{{ meta.description }}">
+
+      <meta property="og:description" content="{{ meta.description }}">
+      <meta property="og:site_name" content="{{ site.title }}">
+      <meta property="og:title" content="{{ meta.title }}">
+
+      <meta property="twitter:card" content="summary_large_image">
+      <meta property="twitter:description" content="{{ meta.description }}">
+      <meta property="twitter:domain" content="{{ site.url }}">
+      <meta property="twitter:title" content="{{ meta.title }}">
+    {% endblock meta %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
+
+    <link rel="icon" href="{% asset 'img/icon.png' %}">
+    <link rel="mask-icon" href="{% asset 'img/mask-icon.svg' %}" color="#5AADED">
+    <link rel="apple-touch-icon-precomposed" href="{% asset 'img/apple-touch-icon-precomposed.png' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400italic,300italic,300">
+    <link rel="stylesheet" href="{% asset 'css/styles.css' %}">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    {{ site.code_head }}
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      {% include 'partials/header.html' %}
+
+      {% block content %}
+      {% endblock content %}
+
+      {% include 'partials/footer.html' %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="{% asset 'js/main.js' %}"></script>
+
+    {{ site.code_body }}
+  </body>
+</html>

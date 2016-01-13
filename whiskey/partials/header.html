@@ -1,0 +1,34 @@
+<a href="#" class="menu-toggle"><i class="fa fa-bars"></i></a>
+
+<header class="site-header">
+  {% if site.navigation %}
+    <nav class="site-navigation">
+      <div class="site-navigation__inner">
+        <ul>
+          {% for item in site.navigation %}
+            <li><a href="{{ item.url }}">{{ item.title }}</a><span class="separator">/</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  {% endif %}
+
+  <div class="site-header__inner">
+    <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+    <div class="site-description">{{ site.description }}</div>
+  </div>
+</header>
+
+<header class="site-header--mini">
+  <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+
+  {% if site.navigation %}
+    <nav class="site-navigation">
+      <ul>
+        {% for item in site.navigation %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a><span class="separator">/</span></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</header>

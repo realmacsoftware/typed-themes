@@ -1,0 +1,29 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ page.url|absolute_url }}">
+  {% if page.images %}
+    <meta property="og:image" content="{{ page.images[0].url }}">
+    <meta name="twitter:image" content="{{ page.images[0].url }}">
+  {% endif %}
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <main class="main">
+      <div class="main__inner">
+        <article class="post post--single page">
+          <h1 class="post-title">{{ page.title }}</h1>
+
+          <div class="content">
+            {{ page.content }}
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+{% endblock content %}
