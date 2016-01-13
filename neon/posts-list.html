@@ -1,0 +1,59 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="page post-list">
+    {% if filters.tags %}
+      <h5 class="tags-title">{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h1>
+    {% endif %}
+
+    <div {% if filters.tags %}class="tags-list"{% endif %}>
+      {% for post in posts %}
+        <article class="post-list__item{% if loop.first and pagination.page_number == 1 %} post-list--latest{% endif %}">
+          <div class="post-title title-link">
+            <h{% if loop.first and pagination.page_number == 1 %}1{% else %}5{% endif %} data-text="{{ post.title }}"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h{% if loop.first and pagination.page_number == 1 %}1{% else %}5{% endif %}>
+          </div>
+
+          <div class="post-date">
+            {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+          </div>
+
+          {% if loop.first and pagination.page_number == 1 %}
+            <div class="post-excerpt">
+              {{ post.excerpt }}
+            </div>
+          {% endif %}
+        </article>
+      {% else %}
+        <h1>No posts</h1>
+      {% endfor %}
+    </div>
+
+    {% if pagination.has_pages %}
+      <nav class="site-pagination">
+        <ul>
+          {% if pagination.has_prev %}
+            <li>
+              <a href="{{ pagination.prev }}" aria-label="Previous"><i class="fa fa-caret-left"></i> Newer Posts</a>
+            </li>
+          {% else %}
+            <li class="disabled">
+              <i class="fa fa-caret-left"></i> Newer Posts
+            </li>
+          {% endif %}
+
+          {% if pagination.has_next %}
+            <li>
+              <a href="{{ pagination.next }}" aria-label="Next">Older Posts <i class="fa fa-caret-right"></i></a>
+            </li>
+          {% else %}
+            <li class="disabled">
+              Older Posts <i class="fa fa-caret-right"></i>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+{% endblock content %}

@@ -1,0 +1,65 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ post.url|absolute_url }}">
+  <meta property="og:type" content="article">
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    {% for image in post.images %}
+      <meta property="og:image" content="{{ image.url }}">
+    {% endfor %}
+  {% endif %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          "{{ post.images[0].url }}"
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ post.content|striptags|e }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <article class="post">
+    <div class="post-title-single">
+      <h1 data-text="{{ post.title }}">{{ post.title }}</h1>
+    </div>
+
+    <div class="post-date">
+      {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+    </div>
+
+    <div class="post-content">
+      {{ post.content }}
+      {% if post.tags %}
+        <p><i class="fa fa-tag"></i> {{ post.tags|tags(last_separator=' and ') }}</p>
+      {% endif %}
+      {% if post.has_prev_post  %}
+        <p><i class="fa fa-arrow-circle-right"></i> <a href="{{ post.prev_post.url }}">Read “{{ post.prev_post.title }}” next</a></p>
+      {% endif %}
+    </div>
+
+    {{ site.code_post }}
+
+    {% for author in post.authors %}
+      <footer class="post-footer">
+        <div class="author-img"><img src="{{ author.avatar }}" alt="{{ author.name }}"></div>
+        <div class="author-bio"><strong>{{ author.name }}</strong>{{ author.bio }}</div>
+      </footer>
+    {% endfor %}
+  </article>
+{% endblock content %}

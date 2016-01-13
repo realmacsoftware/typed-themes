@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="site-meta">
+    <div class="site-title">
+      <h1><a href="/">{{ site.title }}</a></h1>
+    </div>
+
+    {% if site.description %}
+      <div class="site-description">
+        {{ site.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if site.navigation %}
+    <a href="#" class="menu-toggle{% if site.description %} has-site-description{% endif %}"><i class="fa fa-bars"></i></a>
+    <nav class="site-navigation">
+      <ul class="center">
+        {% for item in site.navigation %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</header>
