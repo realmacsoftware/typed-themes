@@ -1,0 +1,32 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="row">
+      <div class="site-navigation">
+        <h1 class="site-brand">
+          <a href="/">{{ site.title }}</a>
+        </h1>
+
+        <div class="nav-toggle" id="nav-toggle"><i class="fa fa-bars"></i></div>
+        <div class="clearfix hidden-md-up"></div>
+
+        <nav role="navigation">
+          {% if site.navigation %}
+            <ul>
+              {% for item in site.navigation %}
+                <li>
+                  <a href="{{ item.url }}" class="nav-link">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </nav>
+      </div>
+
+      {% if site.description  %}
+        <div class="site-description">
+          {{ site.description }}
+        </div>
+      {% endif  %}
+    </div>
+  </div>
+</header>

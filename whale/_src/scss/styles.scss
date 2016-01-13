@@ -1,0 +1,428 @@
+/*
+   ------------------------------------
+   Imports
+   ------------------------------------
+*/
+
+
+@import "fontawesome/font-awesome.scss";
+@import "bootstrap/bootstrap.scss";
+
+/*
+   ------------------------------------
+   Scaffolding
+   ------------------------------------
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  @include media-breakpoint-down(lg) {
+    font-size: 15px;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 14px;
+  }
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+input,
+textarea {
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+  margin-bottom: $spacer;
+}
+
+a {
+  transition: color 0.1s ease-in-out;
+}
+
+/*
+   ------------------------------------
+   Header
+   ------------------------------------
+*/
+
+.site-header {
+  background: $brand-primary;
+  padding: $spacer 0;
+  margin-bottom: $spacer*3;
+
+  a {
+    color: #fff;
+
+    @include hover-focus {
+      color: rgba(#fff, .6);
+    }
+  }
+
+  .site-brand {
+    font-size: $font-size-h4;
+    float: left;
+    margin-bottom: 0;
+  }
+}
+
+.site-navigation,
+.site-description {
+  @extend .col-xs-12;
+  @extend .col-md-10;
+  @extend .col-md-offset-1;
+}
+
+.site-description {
+  &::before {
+    content: " ";
+    width: $spacer;
+    height: 1px;
+    background: rgba(#fff, .3);
+    display: block;
+    margin: $spacer/2 0;
+  }
+
+  color: rgba(#fff, .8);
+
+  p {
+    margin: 0;
+  }
+}
+
+/*
+   ------------------------------------
+   Navigation
+   ------------------------------------
+*/
+
+@include media-breakpoint-up(md) {
+  .site-header {
+    nav {
+      float: right;
+
+      ul {
+        margin: 0;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: $spacer/2;
+      }
+    }
+  }
+
+  .js .nav-collapse {
+    position: relative;
+  }
+
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .site-brand {
+    display: inline-block;
+  }
+
+  .nav-collapse {
+    width: 100%;
+    display: block;
+    margin-top: $spacer/4;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: block;
+      list-style: none;
+    }
+
+    li {
+      width: 100%;
+      display: block;
+      padding-bottom: $spacer/4;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    &.opened {
+      max-height: 9999px;
+    }
+  }
+
+  .js .nav-collapse {
+    clip: rect(0 0 0 0);
+    max-height: 0;
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    zoom: 1;
+  }
+
+  .nav-toggle {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    float: right;
+    color: #fff;
+  }
+}
+
+/*
+   ------------------------------------
+   Content
+   ------------------------------------
+*/
+
+.site {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 5.235rem;
+}
+
+.entry-list,
+.entry-single {
+  @extend .col-xs-12;
+  @extend .col-md-10;
+  @extend .col-md-offset-1;
+}
+
+.entry {
+  margin-bottom: $spacer*3;
+}
+
+.entry-page {
+
+  .entry-header {
+
+    h1 {
+      margin-bottom: $spacer;
+    }
+  }
+}
+
+.entry-title {
+
+  a {
+    color: $headings-color;
+  }
+}
+
+.entry-meta {
+  margin-bottom: $spacer;
+
+  .entry-time {
+    margin-right: $spacer/2;
+  }
+}
+
+.entry-content {
+
+  p,
+  ul,
+  ol,
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6,
+  .fluid-width-video-wrapper {
+    margin-bottom: $spacer;
+  }
+
+  p,
+  ul,
+  ol,
+  hr::before {
+    font-size: 1.294rem;
+  }
+
+  li {
+    margin-bottom: $spacer/4;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Author bio
+   ------------------------------------
+*/
+
+.author {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  @include border-radius($border-radius);
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+  }
+
+  & + .author {
+    margin-top: $spacer/2;
+  }
+
+  .author-inner {
+    position: relative;
+    z-index: 9999;
+    background: rgba(#000, .6);
+    padding: $spacer;
+    @extend .clearfix;
+  }
+
+  .author-avatar {
+    float: left;
+    width: 20%;
+    height: auto;
+
+    @include media-breakpoint-down(sm) {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: $spacer/2;
+    }
+  }
+
+  .author-bio {
+    width: 80%;
+    float: left;
+    padding-left: $spacer;
+
+    @include media-breakpoint-down(sm) {
+      float: none;
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  h4 {
+    color: #fff;
+  }
+}
+
+.author-bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  display: block;
+  width: 950px;
+  height: 400px;
+  margin: -200px 0 0 -475px;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+  background-position: center center;
+  background-size: cover;
+}
+
+/*
+   ------------------------------------
+   Pagination
+   ------------------------------------
+*/
+
+.site-pagination {
+  @extend .row;
+  margin-bottom: $spacer*3;
+  font-size: 1.294rem;
+
+  ul {
+    @extend .col-xs-12;
+    @extend .col-md-10;
+    @extend .col-md-offset-1;
+    list-style: none;
+    margin-bottom: 0;
+  }
+
+  li {
+    &:first-of-type {
+      float: left;
+    }
+
+    &:last-of-type {
+      float: right;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Tag filter
+   ------------------------------------
+*/
+
+.tag-filter {
+  margin-top: -($spacer*1.5);
+  margin-bottom: $spacer*1.5;
+  padding: $spacer/2;
+  background: rgba($brand-primary, .08);
+  color: $brand-primary;
+  @include border-radius($border-radius);
+}
+
+/*
+   ------------------------------------
+   Footer
+   ------------------------------------
+*/
+
+.site-footer {
+  background: rgba($body-color, .04);
+  padding: $spacer 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer-main {
+  @extend .col-xs-12;
+  @extend .col-md-10;
+  @extend .col-md-offset-1;
+  text-align: center;
+  color: rgba($body-color, .4);
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: rgba($headings-color, .4);
+
+    @include hover-focus {
+      color: $headings-color;
+    }
+  }
+}
