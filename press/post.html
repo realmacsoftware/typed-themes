@@ -23,13 +23,9 @@
       "alternativeHeadline": "{{ meta.title }}",
       {% if post.images %}
         "image": [
-        {% for image in post.images %}
-        {% if loop.last %}
-          {{ image.url }}
-        {% else %}
-          {{ image.url }},
-        {% endif %}
-      {% endfor %}
+          {% for image in post.images %}
+            "{{ image.url }}"{% if not loop.last %},{% endif %}
+          {% endfor %}
         ],
       {% endif %}
       "datePublished": "{{ post.published_at|date(isoformat=True) }}",
