@@ -7,12 +7,10 @@
   <meta property="og:type" content="article"/>
 
   {% if post.images %}
-  
-  <meta name="twitter:image" content="{{ post.images[0].url }}">
-  {% for image in post.images %}
-  <meta property="og:image" content="{{ image.url }}" />
-  {% endfor %}
-  
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    {% for image in post.images %}
+      <meta property="og:image" content="{{ image.url }}">
+    {% endfor %}
   {% endif %}
 
   <script type="application/ld+json">
