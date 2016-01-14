@@ -1,0 +1,219 @@
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+  margin-top: $headings-margin-bottom*2;
+  margin-bottom: $headings-margin-bottom;
+  padding-bottom: $headings-margin-bottom;
+  border-bottom: 2px solid rgba($body-color, .1);
+}
+
+h1, .h1 {
+  font-size: $font-size-h1;
+  letter-spacing: -1px;
+}
+
+h2, .h2 {
+  font-size: $font-size-h2;
+  letter-spacing: -0.75px;
+}
+
+h3, .h3 {
+  font-size: $font-size-h3;
+  letter-spacing: -0.5px;
+}
+
+h4, .h4 {
+  font-size: $font-size-h4;
+}
+
+h5, .h5 {
+  font-size: $font-size-h5;
+  font-weight: 400;
+}
+
+h6, .h6 {
+  font-size: $font-size-base;
+  @extend small;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+// Type display classes
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+}
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+}
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+  margin-top: $spacer*2;
+  margin-bottom: $spacer*2;
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+	font-size: 87.5%; // 14px
+
+  @include media-breakpoint-down(sm) {
+    font-size: 100%;
+  }
+}
+
+mark,
+.mark {
+  padding: .2em;
+  background-color: $state-warning-bg;
+}
+
+
+//
+// Lists
+//
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+ul,
+ol {
+  padding-left: 0;
+
+  li {
+    margin-bottom: $spacer/2;
+    // display: block;
+  }
+}
+
+// Horizontal description lists w/ grid classes
+.dl-horizontal {
+  margin-right: -$grid-gutter-width;
+  margin-left: -$grid-gutter-width;
+  @include clearfix;
+}
+
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Blockquotes
+blockquote {
+  padding: 0;
+  margin: $spacer*2 0;
+  font-family: $font-family-sans-serif;
+  font-size: $blockquote-font-size;
+  font-weight: 400;
+  text-align: center;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  footer {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: $line-height;
+    color: $blockquote-small-color;
+
+    &:before {
+      content: "\2014 \00A0"; // em dash, nbsp
+    }
+  }
+}
+
+// Opposite alignment of blockquote
+.blockquote-reverse {
+  padding-right: $spacer;
+  padding-left: 0;
+  text-align: right;
+  border-right: .25rem solid $blockquote-border-color;
+  border-left: 0;
+
+  // Account for citation
+  footer {
+    &:before { content: ""; }
+    &:after {
+      content: "\00A0 \2014"; // nbsp, em dash
+    }
+  }
+}
+
+//
+// Figures
+//
+
+.figure {
+  // Ensures the caption's text aligns with the image.
+  display: inline-block;
+
+  > img {
+    @extend .img-responsive;
+    line-height: 1;
+    margin-bottom: ($spacer-y / 2);
+  }
+}
+
+.figure-caption {
+  font-size: 90%;
+  color: $gray-light;
+}

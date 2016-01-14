@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container post-list">
+    {% if filters.tags %}
+      <div class="tags-title">
+        <h1>{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h1>
+      </div>
+    {% endif %}
+
+    {% for post in posts %}
+      <article class="post">
+        <h1 class="post-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h1>
+
+        <div class="post-meta">{{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>{{ post.tags|tags(last_separator=' and ', prefix=' in ') }}</div>
+
+        <div class="content">
+          {{ post.excerpt }}
+          <a href="{{ post.url }}" class="read-more">Read more...</a>
+        </div>
+      </article>
+    {% else %}
+      <h1>No posts</h1>
+    {% endfor %}
+  </div>
+
+  {% if pagination.has_pages %}
+    <nav class="site-pagination">
+      <ul>
+        {% if pagination.has_prev %}
+          <li class="newer"><a href="{{ pagination.prev }}" aria-label="Newer"><span aria-hidden="true">Newer Posts <i class="fa fa-arrow-left"></i></span></a></li>
+        {% endif %}
+
+        {% if pagination.has_next %}
+          <li class="older"><a href="{{ pagination.next }}" aria-label="Older"><span aria-hidden="true"><i class="fa fa-arrow-right"></i> Older Posts</span></a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+{% endblock content %}

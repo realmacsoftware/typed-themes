@@ -1,0 +1,487 @@
+/*
+   ------------------------------------
+   Import
+   ------------------------------------
+*/
+
+@import "fontawesome/font-awesome.scss";
+@import "bootstrap/bootstrap.scss";
+
+/*
+   ------------------------------------
+   Scaffolding
+   ------------------------------------
+*/
+
+html {
+  @include media-breakpoint-down(sm) {
+    font-size: 14px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+input,
+textarea {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: $body-bg;
+  font-weight: 400;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border-radius: $border-radius;
+  vertical-align: bottom;
+  margin-bottom: $spacer;
+}
+
+.fluid-width-video-wrapper {
+  margin-bottom: $spacer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  margin-bottom: $spacer;
+}
+
+pre {
+  margin-bottom: $spacer;
+}
+
+/*
+   ------------------------------------
+   Header
+   ------------------------------------
+*/
+
+.site-header {
+  @extend container-fluid;
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+  background: #fff;
+  @extend .clearfix;
+  margin-bottom: $spacer*3;
+}
+
+.site-header__inner {
+  @extend .col-xs-12;
+
+  a {
+    color: $body-color;
+
+    @include hover-focus {
+      color: $brand-primary;
+    }
+  }
+}
+
+.site-desc-reveal {
+  color: $body-color;
+
+  @include hover-focus {
+    color: $brand-primary;
+  }
+}
+
+.site-info {
+  float: left;
+  padding-left: $spacer;
+}
+
+.site-title {
+  @extend h4;
+  margin-bottom: 0;
+  margin-top: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: block;
+}
+
+.site-description {
+  display: block;
+  @extend small;
+  font-style: italic;
+  color: rgba($body-color, .6);
+}
+
+.site-navigation {
+  display: none;
+  float: left;
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    display: block !important;
+    float: right;
+    margin-right: $spacer;
+    margin-top: 10px;
+    width: auto;
+  }
+
+  ul {
+    list-style: none;
+    margin: $spacer $spacer 0 $spacer;
+    padding: 0;
+
+    @include media-breakpoint-up(sm) {
+      margin: 0;
+    }
+  }
+
+  li {
+    display: block;
+
+    @include media-breakpoint-up(sm) {
+      float: left;
+      margin-left: $spacer;
+      display: inline;
+    }
+
+    @include media-breakpoint-down(sm) {
+      &:last-of-type a {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    a {
+      padding: $spacer 0;
+      border-top: 1px solid rgba($body-color, .1);
+      display: block;
+    }
+  }
+}
+
+.menu-toggle {
+  display: block;
+  float: right;
+  margin-top: 10px;
+  margin-right: $spacer;
+
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+}
+
+.paginated {
+
+  .site-header {
+    padding-bottom: $spacer;
+    margin-bottom: $spacer*4;
+    background: #F9F9F9;
+  }
+}
+
+/*
+   ------------------------------------
+   Post
+   ------------------------------------
+*/
+
+.figure-caption {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-xs;
+  margin-top: -$spacer/2;
+  margin-bottom: $spacer;
+}
+
+/*
+   ------------------------------------
+   Post list
+   ------------------------------------
+*/
+
+.post-list {
+
+  .post {
+    @extend .col-xs-12;
+    margin-bottom: $spacer*4;
+  }
+
+  .feature-image {
+    width: 80px;
+    height: 80px;
+    display: block;
+    background-size: cover;
+    float: left;
+    margin-right: $spacer;
+  }
+}
+
+.post-title {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: $spacer/2;
+  margin-top: 0;
+
+  a {
+    color: $headings-color;
+
+    @include hover-focus {
+      color: $brand-primary;
+    }
+  }
+}
+
+.post-meta {
+  @extend small;
+  color: rgba($body-color, .6);
+  border-bottom: 2px solid $hr-border-color;
+  margin-bottom: $headings-margin-bottom;
+  padding-bottom: $headings-margin-bottom;
+}
+
+.read-more {
+  float: left;
+}
+
+.tags-title {
+  @extend .col-xs-12;
+  margin-bottom: $spacer*4;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+/*
+   ------------------------------------
+   Single Post
+   ------------------------------------
+*/
+
+.post--single,
+.single-meta {
+  @extend .col-xs-12;
+}
+
+.featured-image {
+  width: 100%;
+  display: block;
+
+  img {
+    width: 100%;
+    border-radius: 0;
+    margin-bottom: $spacer*2;
+  }
+}
+
+.post-meta.has-feature-image {
+  border-bottom: none;
+}
+
+.post-meta.no-feature-image {
+  margin-bottom: $spacer*2;
+}
+
+.post-footer {
+  margin-top: $spacer*4;
+  padding: $spacer*4 0;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  .author-avatar {
+    @extend .col-xs-12;
+
+    img {
+      width: 96px;
+      height: 96px;
+      border-radius: 100%;
+      margin: 0;
+      border: 1px solid #fff;
+      $shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 2px rgba(0, 0, 0, .1);
+      @include box-shadow($shadow);
+    }
+  }
+
+  .author-bio {
+    @extend .col-xs-12;
+
+    h3 {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
+
+.author-bg {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  bottom: -100px;
+  right: -100px;
+  width: 130%;
+  overflow: hidden;
+  z-index: -1;
+  display: block;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($body-color, .7);
+    z-index: 100;
+  }
+
+  img {
+    width: 100%;
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -ms-filter: blur(20px);
+    filter: blur(20px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*
+   ------------------------------------
+   Page
+   ------------------------------------
+*/
+
+.page {
+  margin-bottom: $spacer*4;
+}
+
+.page-title {
+  margin-top: 0;
+}
+
+/*
+   ------------------------------------
+   Pagination
+   ------------------------------------
+*/
+
+.site-pagination {
+  @include media-breakpoint-down(sm) {
+    @extend .container;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include media-breakpoint-down(sm) {
+      @extend .row;
+      padding-bottom: $spacer*4;
+    }
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 50%;
+    margin-top: -16px;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+      position: static;
+      margin: 0;
+
+      .fa {
+        display: none;
+      }
+    }
+
+    &.newer {
+      left: -115px;
+      border-radius: 0 $border-radius $border-radius 0;
+
+      @include hover-focus {
+        left: 0;
+      }
+
+      @include media-breakpoint-down(sm) {
+        float: left;
+        margin-left: $grid-gutter-width/2;
+        border-radius: $border-radius;
+      }
+    }
+
+    &.older {
+      right: -106px;
+      border-radius: $border-radius 0 0 $border-radius;
+
+      @include hover-focus {
+        right: 0;
+      }
+
+      @include media-breakpoint-down(sm) {
+        float: right;
+        margin-right: $grid-gutter-width/2;
+        border-radius: $border-radius;
+      }
+    }
+  }
+
+  a {
+    font-family: $font-family-sans-serif;
+    color: $brand-primary;
+    border-bottom: none;
+    background: rgba($brand-primary, .2);
+    padding: $spacer/4 $spacer/2;
+  }
+}
+
+/*
+   ------------------------------------
+   Upnext
+   ------------------------------------
+*/
+
+.upnext {
+  background: #fff;
+  position: fixed;
+  bottom: $spacer*2;
+  right: $spacer*2;
+  width: 300px;
+  padding: $spacer/2 $spacer;
+  border-radius: $border-radius;
+  border: 1px solid $hr-border-color;
+  box-shadow: 1px 0 4px rgba(#000, .1);
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  display: none;
+  z-index: 100;
+
+  @include media-breakpoint-down(sm) {
+    display: none !important;
+  }
+}
+
+/*
+   ------------------------------------
+   Footer
+   ------------------------------------
+*/
+
+.site-footer {
+  background: #F9F9F9;
+  padding: $spacer*2 0;
+  text-align: center;
+  @extend small;
+}

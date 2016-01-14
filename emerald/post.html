@@ -1,0 +1,82 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ post.url|absolute_url }}">
+  <meta property="og:type" content="article">
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    {% for image in post.images %}
+      <meta property="og:image" content="{{ image.url }}">
+    {% endfor %}
+  {% endif %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          {% for image in post.images %}
+            "{{ image.url }}"{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ post.content|striptags|e }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <div class="single-meta">
+      <h1 class="post-title">{{ post.title }}</h1>
+      <div class="post-meta {% if post.images %}has{% else %}no{% endif %}-feature-image">{% for author in post.authors %}by <a href="#author">{{ author.name }}</a>{% endfor %} on <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>{{ post.tags|tags(last_separator=' and ', prefix=' in ') }}</div>
+    </div>
+  </div>
+
+  {% if post.images %}
+    <div class="featured-image">
+      <img src="{{ post.images[0].url }}" alt="Banner image for {{ post.title }}">
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <article class="post post--single">
+      <div class="content">
+        {{ post.content }}
+        {{ site.code_post }}
+      </div>
+  </div>
+
+  <footer class="post-footer" id="author">
+    <div class="container">
+      {% for author in post.authors %}
+        <div class="author-avatar">
+          <img src="{{ author.avatar }}" alt="{{ author.name }}">
+        </div>
+
+        <div class="author-bio">
+          <h3>{{ author.name }}</h3>
+          {{ author.bio }}
+        </div>
+
+        <div class="author-bg"><img src="{{ author.avatar }}"></div>
+      {% endfor %}
+    </div>
+  </footer>
+
+  {% if post.has_prev_post %}
+    <div class="upnext">
+      <p class="upnext--title">Up next: <a href="{{ post.prev_post.url }}">{{ post.prev_post.title }}</a></p>
+    </div>
+  {% endif %}
+{% endblock content %}
