@@ -1,0 +1,450 @@
+/*
+   ------------------------------------
+   Import
+   ------------------------------------
+*/
+
+@import "fontawesome/font-awesome.scss";
+@import "bootstrap/bootstrap.scss";
+
+/*
+   ------------------------------------
+   Scaffolding
+   ------------------------------------
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #E1E6EA;
+  background-image: url(../img/squares.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
+
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-base*.85;
+  }
+
+  @include media-breakpoint-down(sm) {
+    line-height: 1.6;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+    background-image: url(../img/squares@2x.png);
+    background-size: 297px 297px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 15px auto;
+  display: inline-block;
+  border-radius: $border-radius;
+}
+
+.embed-responsive,
+.fluid-width-video-wrapper {
+  margin-top: $spacer*2;
+  margin-bottom: $spacer*2;
+}
+
+table {
+  margin-top: $spacer*2;
+  margin-bottom: $spacer*2;
+}
+
+pre {
+  margin-top: $spacer*2;
+  margin-bottom: $spacer*2;
+}
+
+/*
+   ------------------------------------
+   Header
+   ------------------------------------
+*/
+
+.site-header {
+  margin-bottom: $spacer*8;
+  padding-top: $spacer;
+  @extend .clearfix;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: $spacer*6;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*4;
+  }
+}
+
+.site-title {
+  font-size: $font-size-h5;
+  padding: 0;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+  float: left;
+  font-weight: 700;
+
+  @include media-breakpoint-down(lg) {
+    float: none;
+    display:  block;
+    text-align: center;
+  }
+
+  a {
+    color: $headings-color;
+  }
+}
+
+/*
+   ------------------------------------
+   Navigation
+   ------------------------------------
+*/
+
+.navigation {
+  @extend small;
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+  margin: -1px 0 0 0;
+  float: right;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  @include media-breakpoint-down(lg) {
+    float: none;
+    display:  block;
+    margin: $spacer/2 0 0 0;
+    text-align: center;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    @extend .clearfix;
+
+    @include media-breakpoint-down(lg) {
+      display: inline-block;
+    }
+  }
+
+  li {
+    float: left;
+    margin-left: $spacer;
+
+    @include media-breakpoint-down(lg) {
+      margin: 0 $spacer/2;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Main
+   ------------------------------------
+*/
+
+.main {
+  width: 70%;
+  height: 100%;
+  overflow: scroll;
+  float: left;
+
+  @include media-breakpoint-down(lg) {
+    float: none;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 200;
+  $shadow: 0 1px 20px rgba(#000, .03);
+  @include box-shadow($shadow);
+  background: $body-bg;
+  overflow-y: scroll;
+}
+
+.content {
+  @extend .container;
+}
+
+.content__inner {
+  @extend .col-lg-10;
+  @extend .col-lg-offset-1;
+}
+
+/*
+   ------------------------------------
+   Sidebar
+   ------------------------------------
+*/
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  float: right;
+  width: 30%;
+  height: 100%;
+  overflow-y: scroll;
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  h6 {
+    margin: 1.250rem 0 $spacer 0;
+  }
+
+  .site-description {
+    margin: 0 0 $spacer*2 $spacer*2;
+    padding-right: $spacer*2;
+
+    p {
+      @extend small;
+      line-height: 1.7;
+      color: rgba($body-color, .6);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .post-list {
+    margin: 0 0 $spacer*2 $spacer*2;
+  }
+
+  .sidebar-post {
+    padding-right: $spacer*2;
+    padding-bottom: $spacer*2;
+    margin-bottom: $spacer*2;
+    border-bottom: $border-width solid $hr-border-color;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .post-pagination {
+    padding: 0 $spacer*2 $spacer $spacer*2;
+
+    &:nth-child(2) {
+      padding-bottom: $spacer*2;
+    }
+  }
+
+  .post-title {
+    margin-bottom: $spacer;
+  }
+
+  .post-excerpt {
+    @extend small;
+    margin-bottom: $spacer;
+    line-height: 1.7;
+    color: rgba($body-color, .6);
+  }
+
+  .read-more {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+  .post-author {
+    padding: 0 $spacer*2 $spacer $spacer*2;
+  }
+
+  .author-avatar {
+    max-width: 80px;
+    float: left;
+    margin-right: $spacer;
+    margin-bottom: $spacer;
+    margin-top: 4px;
+
+    img {
+      margin: 0;
+      $shadow: inset 0 1px 2px 0 rgba(255, 255, 255, .1), 0 1px 1px rgba(0,0,0,.1);
+      @include box-shadow($shadow);
+    }
+  }
+
+  .author-bio {
+    @extend small;
+    line-height: 1.7;
+    color: rgba($body-color, .6);
+  }
+}
+
+/*
+   ------------------------------------
+   Global
+   ------------------------------------
+*/
+
+.post-title,
+.page-title {
+  margin-bottom: $spacer/4;
+
+  a {
+    color: $headings-color;
+
+    @include hover-focus {
+      color: $link-color;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Posts
+   ------------------------------------
+*/
+
+.post {
+  margin-bottom: $spacer*8;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: $spacer*6;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*4;
+  }
+}
+
+.post-meta {
+  margin-bottom: $spacer*2;
+  font-family: $font-family-sans-serif;
+  color: $text-muted;
+  font-weight: 400;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer;
+  }
+}
+
+.post-share {
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  a {
+    margin-right: $spacer/4;
+  }
+
+  .fa {
+    margin-right: 0;
+  }
+}
+
+.tag-filter {
+  margin-bottom: $spacer*8;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: $spacer*6;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*4;
+  }
+}
+
+/*
+   ------------------------------------
+   Pagination
+   ------------------------------------
+*/
+
+.pagination {
+  margin-bottom: $spacer*8;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: $spacer*6;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer*4;
+  }
+
+  ul {
+    @extend .row;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  li {
+    @extend .col-xs-6;
+  }
+
+  a {
+    display: block;
+    border-radius: $border-radius;
+    text-align: center;
+    padding: $spacer;
+    font-family: $font-family-sans-serif;
+    @extend small;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+}
+
+.sidebar-pagination {
+  font-family: $font-family-sans-serif;
+  padding-bottom: $spacer*2;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+
+    &:first-of-type {
+      margin-right: $spacer;
+      float: left;
+    }
+
+    &:last-of-type {
+      float: right;
+      margin-right: $grid-gutter-width;
+    }
+  }
+}
+
+/*
+   ------------------------------------
+   Footer
+   ------------------------------------
+*/
+
+.footer {
+  @extend small;
+  font-family: $font-family-sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba($body-color, .6);
+  padding-top: $spacer;
+
+  a {
+    color: $body-color;
+
+    @include hover-focus {
+      color: rgba($body-color, .6);
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+  {{ super() }}
+
+  <main id="content" class="main page-posts-list">
+    <div class="wrapper">
+      <div class="content">
+        <div class="row">
+          <div class="content__inner">
+            {% include 'partials/header.html' %}
+
+            {% if filters.tags %}
+              <h4 class="tag-filter">{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h4>
+            {% endif %}
+
+            {% for post in posts %}
+              <div class="post">
+                <div class="post-meta">
+                  <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                  <span class="post-author">{{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }}</span>
+                  <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+                  {% if post.tags %}<span class="post-tags">{{ post.tags|tags(last_separator=' and ', prefix=' &middot; ', autolink=True) }}</span>{% endif %}
+                </div>
+
+                <div class="post-content">
+                  {{ post.content }}
+                </div>
+
+                <div class="post-share">
+                  <a href="https://twitter.com/intent/tweet?text={{ post.title|striptags|e }}&url={{ post.url|absolute_url }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.url|absolute_url }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                  <a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title|striptags|e }}" class="btn btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
+                  <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.url|absolute_url }}&title={{ post.title|striptags|e }}&summary={{ post.excerpt|striptags|e }}&source={{ site.url }}" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                </div>
+              </div>
+            {% endfor %}
+
+            {% if pagination.has_pages %}
+              <nav class="pagination">
+                <ul>
+                  {% if pagination.has_prev %}
+                    <li><a href="{{ pagination.prev }}" class="btn btn-secondary" aria-label="Previous">&#10094; Newer Posts</a></li>
+                  {% else %}
+                    <li><a class="btn btn-secondary btn-disabled" aria-label="Previous">&#10094; Newer Posts</a></li>
+                  {% endif %}
+
+                  {% if pagination.has_next %}
+                    <li><a href="{{ pagination.next }}" class="btn btn-secondary" aria-label="Next">Older Posts &#10095;</a></li>
+                  {% else %}
+                    <li><a class="btn btn-secondary btn-disabled" aria-label="Next">Older Posts &#10095;</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+  </main>
+
+  <aside class="sidebar">
+    {% if site.description %}
+      <div class="site-description">
+        <h6>About {{ site.title }}</h6>
+        {{ site.description }}
+      </div>
+    {% endif %}
+
+    <div class="post-list">
+      <h6>Post list</h6>
+      {% for post in posts %}
+        <div class="sidebar-post">
+          <h4 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+          <div class="post-excerpt">{{ post.excerpt }}</div>
+          <a href="{{ post.url }}" class="read-more">Continue Reading &#10095;</a>
+        </div>
+      {% endfor %}
+
+      {% if pagination.has_pages %}
+        <nav class="sidebar-pagination">
+          <ul>
+            {% if pagination.has_prev %}
+              <li><a href="{{ pagination.prev }}" aria-label="Previous">&#10094; Newer</a></li>
+            {% else %}
+              <li>&#10094; Newer</li>
+            {% endif %}
+
+            {% if pagination.has_next %}
+              <li><a href="{{ pagination.next }}" aria-label="Next">Older &#10095;</a></li>
+            {% else %}
+              <li>Older &#10095;</li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </aside>
+{% endblock content %}

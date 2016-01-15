@@ -1,0 +1,111 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ post.url|absolute_url }}">
+  <meta property="og:type" content="article">
+
+  {% if post.images %}
+    <meta name="twitter:image" content="{{ post.images[0].url }}">
+    {% for image in post.images %}
+      <meta property="og:image" content="{{ image.url }}">
+    {% endfor %}
+  {% endif %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ meta.title }}",
+      "alternativeHeadline": "{{ meta.title }}",
+      {% if post.images %}
+        "image": [
+          "{{ post.images[0].url }}"
+        ],
+      {% endif %}
+      "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+      "description": "{{ meta.description }}",
+      "articleBody": "{{ post.content|striptags|e }}"
+    }
+  </script>
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <main id="content" class="main">
+    <div class="wrapper">
+      <div class="content">
+        <div class="row">
+          <div class="content__inner">
+            {% include 'partials/header.html' %}
+
+            <div class="post">
+              <div class="post-meta">
+                <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                <span class="post-author">{{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }}</span>
+                <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+                {% if post.tags %}<span class="post-tags">{{ post.tags|tags(last_separator=' and ', prefix=' &middot; ', autolink=True) }}</span>{% endif %}
+              </div>
+
+              <div class="post-content">
+                {{ post.content }}
+                {{ site.code_post }}
+              </div>
+
+              <div class="post-share">
+                <a href="https://twitter.com/intent/tweet?text={{ post.title|striptags|e }}&url={{ post.url|absolute_url }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.url|absolute_url }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                <a href="http://pinterest.com/pin/create/button/?url={{ post.url|absolute_url }}&description={{ post.title|striptags|e }}" class="btn btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.url|absolute_url }}&title={{ post.title|striptags|e }}&summary={{ post.excerpt|striptags|e }}&source={{ site.url }}" class="btn btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+  </main>
+
+  <aside class="sidebar">
+    {% if site.description %}
+      <div class="site-description">
+        <h6>About {{ site.title }}</h6>
+        {{ site.description }}
+      </div>
+    {% endif %}
+
+    {% for author in post.authors %}
+      <div class="post-author">
+        <h6>Written by {{ author.name }}</h6>
+        <div class="author-avatar">
+          <img src="{{ author.avatar }}">
+        </div>
+        <div class="author-bio">
+          {{ author.bio }}
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    {% endfor %}
+
+    {% if post.has_prev_post  %}
+      <div class="post-pagination">
+        <h6>Previous post</h6>
+        <h4 class="post-title"><a href="{{ post.prev_post.url }}">{{ post.prev_post.title }}</a></h4>
+        <div class="post-excerpt">{{ post.prev_post.excerpt }}</div>
+        <a href="{{ post.prev_post.url }}" class="read-more">Continue Reading &#10095;</a>
+      </div>
+    {% endif %}
+
+    {% if post.has_next_post  %}
+      <div class="post-pagination">
+        <h6>Next post</h6>
+        <h4 class="post-title"><a href="{{ post.next_post.url }}">{{ post.next_post.title }}</a></h4>
+        <div class="post-excerpt">{{ post.next_post.excerpt }}</div>
+        <a href="{{ post.next_post.url }}" class="read-more">Continue Reading &#10095;</a>
+      </div>
+    {% endif %}
+  </aside>
+{% endblock content %}

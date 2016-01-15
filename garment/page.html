@@ -1,0 +1,48 @@
+{% extends 'partials/base.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+  <meta property="og:url" content="{{ page.url|absolute_url }}">
+  {% if page.images %}
+    <meta property="og:image" content="{{ page.images[0].url }}">
+    <meta name="twitter:image" content="{{ page.images[0].url }}">
+  {% endif %}
+{% endblock meta %}
+
+{% block content %}
+  {{ super() }}
+
+  <main id="content" class="main">
+    <div class="wrapper">
+      <div class="content">
+        <div class="row">
+          <div class="content__inner">
+            {% include 'partials/header.html' %}
+
+            <div class="post">
+              <div class="post-meta">
+                <h1 class="post-title">{{ page.title }}</h1>
+              </div>
+
+              <div class="post-content">
+                {{ page.content }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+  </main>
+
+  <aside class="sidebar">
+    {% if site.description %}
+      <div class="site-description">
+        <h6>About {{ site.title }}</h6>
+        {{ site.description }}
+      </div>
+    {% endif %}
+  </aside>
+{% endblock content %}
