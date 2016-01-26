@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
+    <link rel="alternate" href="{% if theme.variables.feedpress_url %}{{ theme.variables.feedpress_url }}{% else %}{{ site.feed_url }}{% endif %}" title="{{ site.title }}" type="application/rss+xml">
 
     <link rel="icon" href="{% asset 'img/icon.png' %}">
     <link rel="mask-icon" href="{% asset 'img/mask-icon.svg' %}" color="#5AADED">
