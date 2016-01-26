@@ -26,7 +26,8 @@
     },
     {
       "key": "feedpress_url",
-      "title": "Feedpress feed URL"
+      "title": "Feedpress feed URL",
+      "help_text": "This will replace the default RSS feed URL on your site."
     }
   ]
 }
