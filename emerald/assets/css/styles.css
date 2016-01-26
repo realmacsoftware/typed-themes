@@ -8951,6 +8951,76 @@ a.bg-danger:focus, a.bg-danger:hover {
   }
 }
 
+.typed-social-wrapper {
+  margin: 0 0 0.75rem 0;
+}
+
+.typed-social {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.typed-social-facebook {
+  background-image: url(../img/social/typed-social-facebook.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .typed-social-facebook {
+    background-image: url(../img/social/typed-social-facebook@2x.png);
+    background-size: 32px 32px;
+  }
+}
+
+.typed-social-instagram {
+  background-image: url(../img/social/typed-social-instagram.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .typed-social-instagram {
+    background-image: url(../img/social/typed-social-instagram@2x.png);
+    background-size: 32px 32px;
+  }
+}
+
+.typed-social-linkedin {
+  background-image: url(../img/social/typed-social-linkedin.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .typed-social-linkedin {
+    background-image: url(../img/social/typed-social-linkedin@2x.png);
+    background-size: 32px 32px;
+  }
+}
+
+.typed-social-pinterest {
+  background-image: url(../img/social/typed-social-pinterest.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .typed-social-pinterest {
+    background-image: url(../img/social/typed-social-pinterest@2x.png);
+    background-size: 32px 32px;
+  }
+}
+
+.typed-social-twitter {
+  background-image: url(../img/social/typed-social-twitter.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .typed-social-twitter {
+    background-image: url(../img/social/typed-social-twitter@2x.png);
+    background-size: 32px 32px;
+  }
+}
+
 /*
    ------------------------------------
    Scaffolding
