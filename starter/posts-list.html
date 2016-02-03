@@ -1,6 +1,20 @@
 <!-- Extend our base template -->
 {% extends 'partials/base.html' %}
 
+<!-- Override the head block from the base template to insert extra markup -->
+{% block head %}
+  <!-- Call `super()` to include the markup from our base template's head block -->
+  {{ super() }}
+
+  <!-- Loop over each of the tags, if there are any, that the posts are filtered by -->
+  {% for tag in filters.tags %}
+    <!-- Link to the tag's RSS feed -->
+    <link rel="alternate" href="{{ tag.feed_url }}" title="{{ site.title }} - {{ tag.title }}" type="application/rss+xml">
+  {% endfor %}
+
+<!-- End overriding the head block -->
+{% endblock head %}
+
 <!-- Override the content block from the base template to insert our own markup -->
 {% block content %}
   <!-- Call `super()` to include any markup from our base template's content block -->

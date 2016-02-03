@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Declare a head block where our other templates can insert extra markup to -->
+    {% block head %}
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Include the meta description of the page -->
-    <meta name="description" content="{{ meta.description }}">
+      <!-- Include the meta description of the page -->
+      <meta name="description" content="{{ meta.description }}">
 
-    <!-- Include the title of the page -->
-    <title>{{ meta.title }}</title>
+      <!-- Include the title of the page -->
+      <title>{{ meta.title }}</title>
 
-    <!-- Link to a stylesheet from an external source -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <!-- Link to a stylesheet from an external source -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- Link to our theme's stylesheet in the assets folder -->
-    <link rel="stylesheet" href="{% asset 'css/styles.css' %}">
+      <!-- Link to our theme's stylesheet in the assets folder -->
+      <link rel="stylesheet" href="{% asset 'css/styles.css' %}">
 
-    <!-- Link to our site's RSS feed -->
-    <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
+      <!-- Link to our site's RSS feed -->
+      <link rel="alternate" href="{{ site.feed_url }}" title="{{ site.title }}" type="application/rss+xml">
 
-    <!-- Include our site's head code -->
-    {{ site.code_head }}
+      <!-- Include our site's head code -->
+      {{ site.code_head }}
+    {% endblock head %}
   </head>
   <body>
     <!-- Include the header partial template -->
