@@ -8,7 +8,7 @@
 
   <!-- If the posts are filtered by tags then include a title of which tags -->
   {% if filters.tags %}
-    <!-- Include tags title -->
+    <!-- Include the tags' titles -->
     <h1>{{ filters.tags|tags(last_separator=' and ', prefix='Posts tagged: ', autolink=False) }}</h1>
   {% endif %}
 
