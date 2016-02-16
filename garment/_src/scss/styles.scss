@@ -323,6 +323,11 @@ pre {
   }
 }
 
+.link-char {
+  color: rgba($body-color, .6);
+  margin-left: $spacer/4;
+}
+
 .post-meta {
   margin-bottom: $spacer*2;
   font-family: $font-family-sans-serif;

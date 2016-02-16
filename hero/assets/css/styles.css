@@ -9075,6 +9075,10 @@ a {
   color: #31A5FF;
 }
 
+.link-char {
+  margin-left: 0.32825rem;
+}
+
 .entry-content a {
   color: #212121;
   text-decoration: underline;

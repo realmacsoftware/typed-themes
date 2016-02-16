@@ -39,7 +39,14 @@
       <div class="main__inner">
         <article class="post post--single">
           <div class="post__inner">
-            <h1 class="post-title">{{ post.title }}</h1>
+            <h1 class="post-title">
+              {% if post.linked_url %}
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              {% else %}
+                <a href="{{ post.url }}">{{ post.title }}</a>
+              {% endif %}
+            </h1>
 
             <div class="post-extras__date">
               <i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>

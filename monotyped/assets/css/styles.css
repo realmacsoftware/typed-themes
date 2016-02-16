@@ -6646,6 +6646,10 @@ strong {
     .post-title a:focus, .post-title a:hover {
       text-decoration: underline; }
 
+.link-char {
+  color: rgba(17, 17, 17, 0.6);
+  margin-left: 0.25rem; }
+
 .post-meta {
   color: rgba(17, 17, 17, 0.6);
   margin-bottom: 1rem; }

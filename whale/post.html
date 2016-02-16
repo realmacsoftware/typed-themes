@@ -38,7 +38,14 @@
     <div class="entry-single">
       <article class="entry">
         <header class="entry-header">
-          <h1>{{ post.title }}</h1>
+          {% if post.linked_url %}
+            <h2 class="entry-title">
+              <a href="{{ post.linked_url }}">{{ post.title }}</a>
+              <span class="link-char">→</span>
+            </h2>
+          {% else %}
+            <h1>{{ post.title }}</h1>
+          {% endif %}
 
           <p class="entry-meta">
             <span class="entry-time">

@@ -125,6 +125,11 @@ blockquote ol:last-child {
   margin-bottom: 0;
 }
 
+.link-char {
+  margin-left: 5px;
+  color: #a5a5a5;
+}
+
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
