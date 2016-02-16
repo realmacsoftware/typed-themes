@@ -1,0 +1,32 @@
+.typed-social-wrapper {
+  margin: 0 0 ($spacer - $spacer/4) 0;
+}
+
+.typed-social {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: $spacer/4;
+  margin-right: $spacer/4;
+  margin-bottom: $spacer/4;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 1px rgba(#000, .1);
+}
+
+@mixin typed-social($network) {
+  .typed-social-#{$network} {
+    background-image: url(../img/social/typed-social-#{$network}.png);
+
+    @media (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+      background-image: url(../img/social/typed-social-#{$network}@2x.png);
+      background-size: 32px 32px;
+    }
+  }
+}
+
+@include typed-social(facebook);
+@include typed-social(instagram);
+@include typed-social(linkedin);
+@include typed-social(pinterest);
+@include typed-social(twitter);

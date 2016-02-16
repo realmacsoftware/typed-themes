@@ -1,5 +1,33 @@
 {
   "name": "Emerald",
-  "version": "1.0.1",
-  "engine": "1.0.0"
+  "version": "1.0.2",
+  "engine": "1.0.0",
+  "variables": [
+    {
+      "key": "twitter_username",
+      "title": "Twitter username",
+      "help_text": "Without the @ symbol."
+    },
+    {
+      "key": "facebook_url",
+      "title": "Facebook profile URL"
+    },
+    {
+      "key": "linkedin_url",
+      "title": "LinkedIn profile URL"
+    },
+    {
+      "key": "instagram_username",
+      "title": "Instagram username"
+    },
+    {
+      "key": "pinterest_username",
+      "title": "Pinterest username"
+    },
+    {
+      "key": "feedpress_url",
+      "title": "Feedpress feed URL",
+      "help_text": "This will replace the default RSS feed URL on your site."
+    }
+  ]
 }

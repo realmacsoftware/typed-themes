@@ -1,5 +1,12 @@
 {
   "name": "Whiskey",
-  "version": "1.0.7",
-  "engine": "1.0.0"
+  "version": "1.0.8",
+  "engine": "1.0.0",
+  "variables": [
+    {
+      "key": "feedpress_url",
+      "title": "Feedpress feed URL",
+      "help_text": "This will replace the default RSS feed URL on your site."
+    }
+  ]
 }

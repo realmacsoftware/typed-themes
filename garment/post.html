@@ -77,6 +77,30 @@
       </div>
     {% endif %}
 
+    {% if theme.variables.twitter_username or theme.variables.facebook_url or theme.variables.linkedin_url or theme.variables.instagram_username or theme.variables.pinterest_username %}
+      <div class="typed-social-wrapper">
+        {% if theme.variables.twitter_username %}
+          <a href="https://twitter.com/{{ theme.variables.twitter_username }}" class="typed-social typed-social-twitter"></a>
+        {% endif %}
+
+        {% if theme.variables.facebook_url %}
+          <a href="{{ theme.variables.facebook_url }}" class="typed-social typed-social-facebook"></a>
+        {% endif %}
+
+        {% if theme.variables.linkedin_url %}
+          <a href="{{ theme.variables.linkedin_url }}" class="typed-social typed-social-linkedin"></a>
+        {% endif %}
+
+        {% if theme.variables.instagram_username %}
+          <a href="https://www.instagram.com/{{ theme.variables.instagram_username }}" class="typed-social typed-social-instagram"></a>
+        {% endif %}
+
+        {% if theme.variables.pinterest_username %}
+          <a href="https://pinterest.com/{{ theme.variables.pinterest_username }}" class="typed-social typed-social-pinterest"></a>
+        {% endif %}
+      </div>
+    {% endif %}
+    
     {% for author in post.authors %}
       <div class="post-author">
         <h6>Written by {{ author.name }}</h6>
