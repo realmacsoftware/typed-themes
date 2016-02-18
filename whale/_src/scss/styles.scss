@@ -228,7 +228,16 @@ a {
 
   a {
     color: $headings-color;
+
+    @include hover-focus {
+      color: $brand-primary; 
+    }
   }
+}
+
+.link-char {
+  color: $body-color;
+  margin-left: $spacer/2;
 }
 
 .entry-meta {

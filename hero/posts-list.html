@@ -17,12 +17,21 @@
 
         {% for post in posts %}
           <article class="entry">
-            {% if post.images %}
-              <a class="entry-banner" href="{{ post.url }}" rel="bookmark" style="background-image: url('{{ post.images[0].url }}')"></a>
+            {% if post.linked_url %}{% else %}
+              {% if post.images %}
+                <a class="entry-banner" href="{{ post.url }}" rel="bookmark" style="background-image: url('{{ post.images[0].url }}')"></a>
+              {% endif %}
             {% endif %}
 
             <header class="entry-header">
-              <h2 class="entry-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h2>
+              <h2 class="entry-title">
+                {% if post.linked_url %}
+                  <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                  <span class="link-char">→</span>
+                {% else %}
+                  <a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a>
+                {% endif %}
+              </h2>
 
               <div class="entry-meta">
                 {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
@@ -31,11 +40,19 @@
             </header>
 
             <div class="entry-content">
-              {{ post.excerpt }}
+              {% if post.linked_url %}
+                {{ post.content }}
+              {% else %}
+                {{ post.excerpt }}
+              {% endif %}
             </div>
 
             <footer class="entry-footer">
-              <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+              {% if post.linked_url %}
+                <a href="{{ post.url }}" class="btn btn-primary" rel="bookmark">Permalink</a>
+              {% else %}
+                <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+              {% endif %}
             </footer>
           </article>
         {% endfor %}

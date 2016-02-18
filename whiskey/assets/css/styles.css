@@ -9287,6 +9287,11 @@ strong {
   text-decoration: underline;
 }
 
+.link-char {
+  margin-left: 0.25rem;
+  color: rgba(38, 38, 38, 0.4);
+}
+
 .tags-title h1 {
   margin: 0 0 3rem 0;
 }

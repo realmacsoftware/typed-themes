@@ -14,7 +14,15 @@
       {% for post in posts %}
         <article class="entry">
           <header class="entry-header">
-            <h1 class="entry-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h1>
+            {% if post.linked_url %}
+              <h2 class="entry-title">
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              </h2>
+            {% else %}
+              <h1 class="entry-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h1>
+            {% endif %}
+
             <p class="entry-meta">
               <span class="entry-time">
                 <i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%B %-d %Y at %-I:%M %p') }}</time>
@@ -28,13 +36,23 @@
           </header>
 
           <div class="entry-content">
-            {{ post.excerpt }}
+            {% if post.linked_url %}
+              {{ post.content }}
+            {% else %}
+              {{ post.excerpt }}
+            {% endif %}
           </div>
 
-          {% if post.excerpt != post.content %}
+          {% if post.linked_url %}
             <footer class="entry-footer">
-              <a href="{{ post.url }}">Read more</a>
+              <a href="{{ post.url }}">Permalink</a>
             </footer>
+          {% else %}
+            {% if post.excerpt != post.content %}
+              <footer class="entry-footer">
+                <a href="{{ post.url }}">Read more</a>
+              </footer>
+            {% endif %}
           {% endif %}
         </article>
       {% else %}

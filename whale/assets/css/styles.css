@@ -8807,6 +8807,15 @@ a {
   color: #292E31;
 }
 
+.entry-title a:focus, .entry-title a:hover {
+  color: #00B7FF;
+}
+
+.link-char {
+  color: #6F7C82;
+  margin-left: 0.941rem;
+}
+
 .entry-meta {
   margin-bottom: 1.882rem;
 }

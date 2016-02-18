@@ -15,14 +15,28 @@
     <div class="main col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       {% for post in posts %}
         <article>
-          <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          {% if post.linked_url %}
+            <h2 class="post-title">
+              <a href="{{ post.linked_url }}">{{ post.title }}</a>
+              <span class="link-char">→</span>
+            </h2>
+          {% else %}
+            <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          {% endif %}
+
           <div class="post-meta">
             <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time>
             {{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}
           </div>
+
           <div class="post-excerpt">
-            {{ post.excerpt }}
-            <a href="{{ post.url }}" class="read-more">Read more</a>
+            {% if post.linked_url %}
+              {{ post.content }}
+              <a href="{{ post.url }}" class="read-more">Permalink</a>
+            {% else %}
+              {{ post.excerpt }}
+              <a href="{{ post.url }}" class="read-more">Read more</a>
+            {% endif %}
           </div>
         </article>
       {% else %}

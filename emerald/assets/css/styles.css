@@ -9203,6 +9203,11 @@ pre {
   margin-bottom: 1rem;
 }
 
+.link-char {
+  color: rgba(8, 10, 10, 0.6);
+  margin-left: 0.25rem;
+}
+
 /*
    ------------------------------------
    Post list

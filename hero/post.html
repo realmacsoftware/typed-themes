@@ -47,8 +47,15 @@
       <div class="row">
         <article class="entry">
           <header class="entry-header">
-            <h1 class="entry-title">{{ post.title }}</h1>
-
+            <h1 class="entry-title">
+              {% if post.linked_url %}
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              {% else %}
+                {{ post.title }}
+              {% endif %}
+            </h1>
+            
             <div class="entry-meta">
               {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
               {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}<time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time>

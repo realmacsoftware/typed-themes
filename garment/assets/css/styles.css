@@ -6652,6 +6652,11 @@ pre {
   }
 }
 
+.link-char {
+  color: rgba(15, 30, 43, 0.6);
+  margin-left: 0.25rem;
+}
+
 .post-meta {
   margin-bottom: 2rem;
   font-family: "Raleway", "BenchNine", sans-serif;
