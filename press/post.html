@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -41,7 +51,19 @@
       <div class="post-single__intro" {% if post.images %}style="background-image: url('{{ post.images[0].url }}')"{% endif %}>
         <div class="overlay"></div>
         <div class="post-meta">
-          <h1 class="post-title">{{ post.title }}</h1>
+          {% if post.title %}
+            {% if post.linked_url %}
+              <h1 class="post-title">
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              </h1>
+            {% else %}
+              <h1 class="post-title">{{ post.title }}</h1>
+            {% endif %}
+          {% else %}
+            <h1 class="post-title">{{ post.published_at|date }}</h1>
+          {% endif %}
+
           <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d') }}</time>
           <span class="post-tags">{{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}</span>
         </div>
