@@ -5105,13 +5105,11 @@ button.close {
   transition: transform .3s ease-out;
   transition: transform .3s ease-out, -webkit-transform .3s ease-out;
   -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
           transform: translate(0, -25%);
 }
 
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 
@@ -9141,6 +9139,14 @@ a {
   color: #818a91;
   font-size: 0.875rem;
   margin-bottom: 1.313rem;
+}
+
+.post-list .entry-meta a {
+  color: #818a91;
+}
+
+.post-list .entry-meta a:focus, .post-list .entry-meta a:hover {
+  color: #212121;
 }
 
 .post-list .entry-meta img {

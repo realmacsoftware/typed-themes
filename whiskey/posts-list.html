@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ site.title }} &middot; {{ meta.description }}
+{% endblock title %}
+
 {% block content %}
   {{ super() }}
 
@@ -12,23 +18,34 @@
               <div class="latest-post__post">
                 <div class="ribbon-container"><div class="ribbon"><div class="ribbon-content"><h5>Latest Post</h5></div></div></div>
 
-                <h1 class="latest-post__title">
-                  {% if post.linked_url %}
-                    <a href="{{ post.linked_url }}">{{ post.title }}</a>
-                    <span class="link-char">→</span>
-                  {% else %}
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                  {% endif %}
-                </h1>
+                {% if post.title %}
+                  <h1 class="latest-post__title">
+                    {% if post.linked_url %}
+                      <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                      <span class="link-char">→</span>
+                    {% else %}
+                      <a href="{{ post.url }}">{{ post.title }}</a>
+                    {% endif %}
+                  </h1>
+                {% endif %}
 
                 <div class="latest-post__content">
-                  {{ post.excerpt }}
-                  <p><a href="{{ post.url }}" class="read-more">Continue Reading<i class="fa fa-chevron-right"></i></a></p>
+                  {% if post.title %}
+                    {% if post.linked_url %}
+                      {{ post.content }}
+                      <p><a href="{{ post.url }}" class="read-more">Permalink<i class="fa fa-chevron-right"></i></a></p>
+                    {% else %}
+                      {{ post.excerpt }}
+                      <p><a href="{{ post.url }}" class="read-more">Continue Reading<i class="fa fa-chevron-right"></i></a></p>
+                    {% endif %}
+                  {% else %}
+                    {{ post.content }}
+                  {% endif %}
                 </div>
 
                 <div class="latest-post__extras post-extras">
                   <div class="post-extras__date">
-                    <i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+                    <a href="{{ post.url }}"><i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time></a>
                     <div class="post-author"><i class="fa fa-user"></i>{{ post.authors|authors(last_separator=' and ') }}</div>
                   </div>
 
@@ -55,27 +72,33 @@
           {% if filters.tags or not (pagination.page_number == 1 and loop.first) %}
             <article class="post">
               <div class="post__inner">
-                <h1 class="post-title">
-                  {% if post.linked_url %}
-                    <a href="{{ post.linked_url }}">{{ post.title }}</a>
-                    <span class="link-char">→</span>
-                  {% else %}
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                  {% endif %}
-                </h1>
+                {% if post.title %}
+                  <h1 class="post-title">
+                    {% if post.linked_url %}
+                      <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                      <span class="link-char">→</span>
+                    {% else %}
+                      <a href="{{ post.url }}">{{ post.title }}</a>
+                    {% endif %}
+                  </h1>
+                {% endif %}
 
                 <div class="post-extras__date">
-                  <i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
+                  <a href="{{ post.url }}"><i class="fa fa-calendar-o"></i><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time></a>
                   <i class="fa fa-user"></i>{{ post.authors|authors(last_separator=' and ') }}
                 </div>
 
                 <div class="content">
-                  {% if post.linked_url %}
-                    {{ post.content }}
-                    <p><a href="{{ post.url }}" class="read-more">Permalink<i class="fa fa-chevron-right"></i></a></p>
+                  {% if post.title %}
+                    {% if post.linked_url %}
+                      {{ post.content }}
+                      <p><a href="{{ post.url }}" class="read-more">Permalink<i class="fa fa-chevron-right"></i></a></p>
+                    {% else %}
+                      {{ post.excerpt }}
+                      <p><a href="{{ post.url }}" class="read-more">Continue Reading<i class="fa fa-chevron-right"></i></a></p>
+                    {% endif %}
                   {% else %}
-                    {{ post.excerpt }}
-                    <p><a href="{{ post.url }}" class="read-more">Continue Reading<i class="fa fa-chevron-right"></i></a></p>
+                    {{ post.content }}
                   {% endif %}
                 </div>
 

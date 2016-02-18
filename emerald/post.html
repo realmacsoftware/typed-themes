@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -38,24 +48,28 @@
 
   <div class="container">
     <div class="single-meta">
-      {% if post.linked_url %}
-        <h2 class="post-title">
-          <a href="{{ post.linked_url }}">{{ post.title }}</a>
-          <span class="link-char">→</span>
-        </h2>
-      {% else %}
-        <h1 class="post-title">{{ post.title }}</h1>
+      {% if post.title %}
+        {% if post.linked_url %}
+          <h2 class="post-title">
+            <a href="{{ post.linked_url }}">{{ post.title }}</a>
+            <span class="link-char">→</span>
+          </h2>
+        {% else %}
+          <h1 class="post-title">{{ post.title }}</h1>
+        {% endif %}
       {% endif %}
-      
+
       <div class="post-meta {% if post.images %}has{% else %}no{% endif %}-feature-image">{% for author in post.authors %}by <a href="#author">{{ author.name }}</a>{% endfor %} on <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>{{ post.tags|tags(last_separator=' and ', prefix=' in ') }}</div>
     </div>
   </div>
 
-  {% if post.linked_url %}{% else %}
-    {% if post.images %}
-      <div class="featured-image">
-        <img src="{{ post.images[0].url }}" alt="Banner image for {{ post.title }}">
-      </div>
+  {% if post.title %}
+    {% if post.linked_url %}{% else %}
+      {% if post.images %}
+        <div class="featured-image">
+          <img src="{{ post.images[0].url }}" alt="Banner image for {{ post.title }}">
+        </div>
+      {% endif %}
     {% endif %}
   {% endif %}
 

@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ site.title }} &middot; {{ meta.description }}
+{% endblock title %}
+
 {% block contentclass %}{{ super() }} class="post-list"{% endblock contentclass %}
 
 {% block content %}
@@ -25,33 +31,42 @@
 
             <header class="entry-header">
               <h2 class="entry-title">
-                {% if post.linked_url %}
-                  <a href="{{ post.linked_url }}">{{ post.title }}</a>
-                  <span class="link-char">→</span>
-                {% else %}
-                  <a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a>
+                {% if post.title %}
+                  {% if post.linked_url %}
+                    <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                    <span class="link-char">→</span>
+                  {% else %}
+                    <a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a>
+                  {% endif %}
                 {% endif %}
               </h2>
 
               <div class="entry-meta">
                 {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
-                {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}<time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time>
+                {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}
+                <a href="{{ post.url }}" rel="bookmark"><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time></a>
               </div>
             </header>
 
             <div class="entry-content">
-              {% if post.linked_url %}
-                {{ post.content }}
+              {% if post.title %}
+                {% if post.linked_url %}
+                  {{ post.content }}
+                {% else %}
+                  {{ post.excerpt }}
+                {% endif %}
               {% else %}
-                {{ post.excerpt }}
+                {{ post.content }}
               {% endif %}
             </div>
 
             <footer class="entry-footer">
-              {% if post.linked_url %}
-                <a href="{{ post.url }}" class="btn btn-primary" rel="bookmark">Permalink</a>
-              {% else %}
-                <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+              {% if post.title %}
+                {% if post.linked_url %}
+                  <a href="{{ post.url }}" class="btn btn-primary" rel="bookmark">Permalink</a>
+                {% else %}
+                  <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+                {% endif %}
               {% endif %}
             </footer>
           </article>

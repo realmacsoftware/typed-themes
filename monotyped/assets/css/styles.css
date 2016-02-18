@@ -6654,11 +6654,11 @@ strong {
   color: rgba(17, 17, 17, 0.6);
   margin-bottom: 1rem; }
   .post-meta a {
-    color: #111;
+    color: rgba(17, 17, 17, 0.6);
     background: none;
     padding: 0; }
     .post-meta a:focus, .post-meta a:hover {
-      text-decoration: underline; }
+      color: #111; }
 
 .filters-title {
   margin-top: 0;

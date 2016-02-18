@@ -399,6 +399,14 @@ a {
     font-size: $font-size-sm;
     margin-bottom: $spacer;
 
+    a {
+      color: $text-muted;
+
+      @include hover-focus {
+        color: $body-color; 
+      }
+    }
+
     img {
       width: $spacer*1.3;
       margin-right: $spacer*0.2;

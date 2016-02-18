@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ site.title }} &middot; {{ meta.description }}
+{% endblock title %}
+
 {% block content %}
   {{ super() }}
 
@@ -10,20 +16,37 @@
 
     <div {% if filters.tags %}class="tags-list"{% endif %}>
       {% for post in posts %}
-        <article class="post-list__item{% if loop.first and pagination.page_number == 1 %} post-list--latest{% endif %}">
-          <div class="post-title title-link">
-            <h{% if loop.first and pagination.page_number == 1 %}1{% else %}5{% endif %} data-text="{{ post.title }}"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h{% if loop.first and pagination.page_number == 1 %}1{% else %}5{% endif %}>
-          </div>
-
-          <div class="post-date">
-            {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
-          </div>
-
-          {% if loop.first and pagination.page_number == 1 %}
-            <div class="post-excerpt">
-              {{ post.excerpt }}
+        <article class="post-list__item">
+          {% if post.title %}
+            <div class="post-title title-link">
+              {% if post.linked_url %}
+                <h2 data-text="{{ post.title }} →">
+                  <a href="{{ post.linked_url }}">{{ post.title }} →</a>
+                </h2>
+              {% else %}
+                <h2 data-text="{{ post.title }}"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h2>
+              {% endif %}
             </div>
           {% endif %}
+
+          <div class="post-date">
+            {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }}
+            <a href="{{ post.url }}" rel="bookmark"><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time></a>
+          </div>
+
+          <div class="post-excerpt">
+            {% if post.title %}
+              {% if post.linked_url %}
+                {{ post.content }}
+                <p><a href="{{ post.url }}">Permalink</a></p>
+              {% else %}
+                {{ post.excerpt }}
+                <p><a href="{{ post.url }}">Read more</a></p>
+              {% endif %}
+            {% else %}
+              {{ post.content }}
+            {% endif %}
+          </div>
         </article>
       {% else %}
         <h1>No posts</h1>

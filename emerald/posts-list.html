@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ site.title }} &middot; {{ meta.description }}
+{% endblock title %}
+
 {% block content %}
   {{ super() }}
 
@@ -12,24 +18,34 @@
 
     {% for post in posts %}
       <article class="post">
-        {% if post.linked_url %}
-          <h2 class="post-title">
-            <a href="{{ post.linked_url }}">{{ post.title }}</a>
-            <span class="link-char">→</span>
-          </h2>
-        {% else %}
-          <h1 class="post-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h1>
+        {% if post.title %}
+          {% if post.linked_url %}
+            <h2 class="post-title">
+              <a href="{{ post.linked_url }}">{{ post.title }}</a>
+              <span class="link-char">→</span>
+            </h2>
+          {% else %}
+            <h1 class="post-title"><a href="{{ post.url }}" rel="bookmark">{{ post.title }}</a></h1>
+          {% endif %}
         {% endif %}
 
-        <div class="post-meta">{{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>{{ post.tags|tags(last_separator=' and ', prefix=' in ') }}</div>
+        <div class="post-meta">
+          {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }}
+          <a href="{{ post.url }}" rel="bookmark"><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time></a>
+          {{ post.tags|tags(last_separator=' and ', prefix=' in ') }}
+        </div>
 
         <div class="content">
-          {% if post.linked_url %}
-            {{ post.content }}
-            <a href="{{ post.url }}" class="read-more" rel="bookmark">Permalink</a>
+          {% if post.title %}
+            {% if post.linked_url %}
+              {{ post.content }}
+              <a href="{{ post.url }}" class="read-more" rel="bookmark">Permalink</a>
+            {% else %}
+              {{ post.excerpt }}
+              <a href="{{ post.url }}" class="read-more">Read more...</a>
+            {% endif %}
           {% else %}
-            {{ post.excerpt }}
-            <a href="{{ post.url }}" class="read-more">Read more...</a>
+            {{ post.content }}
           {% endif %}
         </div>
       </article>

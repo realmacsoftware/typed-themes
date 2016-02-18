@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -55,7 +65,7 @@
                 {{ post.title }}
               {% endif %}
             </h1>
-            
+
             <div class="entry-meta">
               {% for author in post.authors %}<img src="{{ author.avatar }}" alt="{{ author.name }}’s avatar">{% endfor %}
               {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=', ') }}<time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date(format='%b %-d %Y') }}</time>

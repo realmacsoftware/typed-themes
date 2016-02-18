@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -38,13 +48,15 @@
     <div class="entry-single">
       <article class="entry">
         <header class="entry-header">
-          {% if post.linked_url %}
-            <h2 class="entry-title">
-              <a href="{{ post.linked_url }}">{{ post.title }}</a>
-              <span class="link-char">→</span>
-            </h2>
-          {% else %}
-            <h1>{{ post.title }}</h1>
+          {% if post.title %}
+            {% if post.linked_url %}
+              <h2 class="entry-title">
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              </h2>
+            {% else %}
+              <h1>{{ post.title }}</h1>
+            {% endif %}
           {% endif %}
 
           <p class="entry-meta">
@@ -62,7 +74,7 @@
         <div class="entry-content">
           {{ post.content }}
 
-          {% if post.has_prev_post  %}
+          {% if post.has_prev_post %}
             <p><i class="fa fa-arrow-circle-right"></i> <a href="{{ post.prev_post.url }}">Read “{{ post.prev_post.title }}” next</a></p>
           {% endif %}
         </div>

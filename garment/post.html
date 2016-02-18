@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -43,13 +53,15 @@
 
             <div class="post">
               <div class="post-meta">
-                {% if post.linked_url %}
-                  <h2 class="post-title">
-                    <a href="{{ post.linked_url }}">{{ post.title }}</a>
-                    <span class="link-char">→</span>
-                  </h2>
-                {% else %}
-                  <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                {% if post.title %}
+                  {% if post.linked_url %}
+                    <h2 class="post-title">
+                      <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                      <span class="link-char">→</span>
+                    </h2>
+                  {% else %}
+                    <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                  {% endif %}
                 {% endif %}
 
                 <span class="post-author">{{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }}</span>
@@ -63,7 +75,7 @@
                 {% if post.linked_url %}
                   <p><a href="{{ post.url }}">Permalink</a></p>
                 {% endif %}
-                
+
                 {{ site.code_post }}
               </div>
 

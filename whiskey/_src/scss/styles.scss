@@ -510,6 +510,14 @@ strong {
   font-family: $font-family-serif;
   margin-bottom: $spacer*1.5;
 
+  a {
+    color: $text-muted;
+
+    @include hover-focus {
+      color: $body-color;
+    }
+  }
+
   .fa {
     padding-right: $spacer/4;
   }

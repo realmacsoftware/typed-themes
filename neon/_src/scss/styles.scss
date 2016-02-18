@@ -68,16 +68,16 @@ pre {
 
 .site-header {
   padding: $spacer/2 $spacer;
-  margin-bottom: $spacer*4;
+  margin-bottom: $spacer*3;
   @extend .clearfix;
   border-bottom: 2px solid $hr-border-color;
 
   @include media-breakpoint-down(md) {
-    margin-bottom: $spacer*3;
+    margin-bottom: $spacer*2;
   }
 
   @include media-breakpoint-down(sm) {
-    margin-bottom: $spacer*2;
+    margin-bottom: $spacer;
   }
 
   a {
@@ -198,12 +198,12 @@ pre {
    ------------------------------------
 */
 
-.post-title-single {
-  margin-bottom: $spacer/4;
-  text-align: center;
+.post-title,
+.post-title-single,
+.page-title {
 
-  h1 {
-    margin-bottom: $spacer/4;
+  h1,
+  h2 {
     background: -webkit-linear-gradient(#EBCB63, #E2B848);
     -webkit-background-clip: text;
     background-clip: text;
@@ -226,17 +226,6 @@ pre {
   }
 }
 
-.post-date {
-  @extend small;
-  text-align: center;
-  margin-bottom: $spacer*2;
-  display: block;
-
-  @include media-breakpoint-down(sm) {
-    margin-bottom: $spacer;
-  }
-}
-
 /*
    ------------------------------------
    Pages
@@ -244,10 +233,12 @@ pre {
 */
 
 .page-title {
-  margin-bottom: $spacer*2;
-
-  @include media-breakpoint-down(sm) {
+  h1 {
     margin-bottom: $spacer;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: $spacer/2;
+    }
   }
 }
 
@@ -261,90 +252,76 @@ pre {
    ------------------------------------
 */
 
-.post-list__item.post-list--latest {
-  text-align: center;
+.post-list__item {
+  padding-top: $spacer*3;
+  padding-bottom: $spacer*3;
+  border-bottom: 2px solid $hr-border-color;
 
-  .title-link {
-    opacity: 1;
+  @include media-breakpoint-down(md) {
+    padding-top: $spacer*2;
+    padding-bottom: $spacer*2;
+  }
 
-    &:hover {
-      opacity: .8;
-    }
+  @include media-breakpoint-down(sm) {
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+  }
+
+  &:first-of-type {
+    padding-top: 0;
   }
 
   .post-title {
-    margin-bottom: $spacer/4;
-
-    h1 {
-      margin-bottom: $spacer/4;
-      background: -webkit-linear-gradient(#EBCB63, #E2B848);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -moz-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      position: relative;
-      display: inline-block;
-      text-align: center;
-
-      &:after {
-        background: none;
-        content: attr(data-text);
-        position: absolute;
-        text-shadow: 0px 0px 6px rgba(#E2B848, 0.18), 0px 1px 0.5px rgba(#8C773C, 0.61), 0px 0.5px 0.5px rgba(#000, 0.20);
-        left: 0;
-        top: 0;
-        z-index: -1;
-        margin: 0 auto;
-      }
-    }
-
-    a {
-      @include hover-focus {
-        background: none;
-      }
-    }
-  }
-
-  .post-date {
-    text-align: center;
-    margin-bottom: $spacer*2;
-
-    @include media-breakpoint-down(sm) {
+    h2 {
       margin-bottom: $spacer;
-    }
-  }
 
-  .post-excerpt{
-    display: block;
-    margin-bottom: $spacer*3;
-
-    @include media-breakpoint-down(md) {
-      margin-bottom: $spacer*2;
-    }
-
-    @include media-breakpoint-down(sm) {
-      margin-bottom: $spacer;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: $spacer/2;
+      }
     }
   }
 }
 
-.post-list__item {
-  padding-bottom: $spacer;
-  margin-bottom: $spacer;
-  border-bottom: 2px solid $hr-border-color;
+.post-title-single {
+  h1 {
+    margin-bottom: $spacer;
 
-  .post-title {
-    h5 {
-      margin-bottom: 0;
-      text-align: left;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: $spacer/2;
     }
   }
+}
 
-  .post-date {
-    margin-top: $spacer/4;
+.title-link {
+  opacity: 1;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.post-excerpt {
+
+  *:last-child {
     margin-bottom: 0;
-    text-align: left;
+  }
+}
+
+.post-date {
+  @extend small;
+  margin-bottom: $spacer;
+  display: block;
+
+  @include media-breakpoint-down(sm) {
+    margin-bottom: $spacer/2;
+  }
+
+  a {
+    color: $body-color;
+
+    @include hover-focus {
+      color: $brand-primary; 
+    }
   }
 }
 
@@ -411,7 +388,15 @@ pre {
 */
 
 .site-pagination {
-  margin-top: $spacer*4;
+  margin-top: $spacer*3;
+
+  @include media-breakpoint-down(md) {
+    margin-top: $spacer*2;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: $spacer*1;
+  }
 
   ul {
     padding: 0;
@@ -444,14 +429,14 @@ pre {
 
 .site-footer {
   text-align: center;
-  margin-top: $spacer*4;
+  margin-top: $spacer*3;
   @extend small;
 
   @include media-breakpoint-down(md) {
-    margin-top: $spacer*3;
+    margin-top: $spacer*2;
   }
 
   @include media-breakpoint-down(sm) {
-    margin-top: $spacer*2;
+    margin-top: $spacer*1;
   }
 }

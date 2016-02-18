@@ -498,12 +498,12 @@ article {
   margin-bottom: 24px;
 }
   .post-meta a {
-    color: #202626;
+    color: #a5a5a5;
     border-bottom: none;
   }
   .post-meta a:hover,
   .post-meta a:focus {
-    color: #2f76bb;
+    color: #202626;
   }
 
 .post-title {

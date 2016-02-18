@@ -6210,19 +6210,19 @@ pre {
 */
 .site-header {
   padding: 0.5rem 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   border-bottom: 2px solid rgba(153, 153, 151, 0.2);
 }
 
 @media (max-width: 61.9em) {
   .site-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 47.9em) {
   .site-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -6341,13 +6341,18 @@ pre {
    Main
    ------------------------------------
 */
-.post-title-single {
-  margin-bottom: 0.25rem;
-  text-align: center;
-}
-
-.post-title-single h1 {
-  margin-bottom: 0.25rem;
+.post-title h1,
+.post-title h2,
+.post-title .site-navigation a, .site-navigation
+.post-title a,
+.post-title-single h1,
+.post-title-single h2,
+.post-title-single .site-navigation a, .site-navigation
+.post-title-single a,
+.page-title h1,
+.page-title h2,
+.page-title .site-navigation a, .site-navigation
+.page-title a {
   background: -webkit-linear-gradient(#EBCB63, #E2B848);
   -webkit-background-clip: text;
   background-clip: text;
@@ -6358,7 +6363,18 @@ pre {
   display: inline-block;
 }
 
-.post-title-single h1:after {
+.post-title h1:after,
+.post-title h2:after,
+.post-title .site-navigation a:after, .site-navigation
+.post-title a:after,
+.post-title-single h1:after,
+.post-title-single h2:after,
+.post-title-single .site-navigation a:after, .site-navigation
+.post-title-single a:after,
+.page-title h1:after,
+.page-title h2:after,
+.page-title .site-navigation a:after, .site-navigation
+.page-title a:after {
   background: none;
   content: attr(data-text);
   position: absolute;
@@ -6369,30 +6385,18 @@ pre {
   margin: 0 auto;
 }
 
-.post-date {
-  text-align: center;
-  margin-bottom: 2rem;
-  display: block;
-}
-
-@media (max-width: 47.9em) {
-  .post-date {
-    margin-bottom: 1rem;
-  }
-}
-
 /*
    ------------------------------------
    Pages
    ------------------------------------
 */
-.page-title {
-  margin-bottom: 2rem;
+.page-title h1 {
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 47.9em) {
-  .page-title {
-    margin-bottom: 1rem;
+  .page-title h1 {
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -6405,93 +6409,79 @@ pre {
    Posts
    ------------------------------------
 */
-.post-list__item.post-list--latest {
-  text-align: center;
-}
-
-.post-list__item.post-list--latest .title-link {
-  opacity: 1;
-}
-
-.post-list__item.post-list--latest .title-link:hover {
-  opacity: .8;
-}
-
-.post-list__item.post-list--latest .post-title {
-  margin-bottom: 0.25rem;
-}
-
-.post-list__item.post-list--latest .post-title h1 {
-  margin-bottom: 0.25rem;
-  background: -webkit-linear-gradient(#EBCB63, #E2B848);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
-
-.post-list__item.post-list--latest .post-title h1:after {
-  background: none;
-  content: attr(data-text);
-  position: absolute;
-  text-shadow: 0px 0px 6px rgba(226, 184, 72, 0.18), 0px 1px 0.5px rgba(140, 119, 60, 0.61), 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
-  left: 0;
-  top: 0;
-  z-index: -1;
-  margin: 0 auto;
-}
-
-.post-list__item.post-list--latest .post-title a:focus, .post-list__item.post-list--latest .post-title a:hover {
-  background: none;
-}
-
-.post-list__item.post-list--latest .post-date {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 47.9em) {
-  .post-list__item.post-list--latest .post-date {
-    margin-bottom: 1rem;
-  }
-}
-
-.post-list__item.post-list--latest .post-excerpt {
-  display: block;
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 61.9em) {
-  .post-list__item.post-list--latest .post-excerpt {
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 47.9em) {
-  .post-list__item.post-list--latest .post-excerpt {
-    margin-bottom: 1rem;
-  }
-}
-
 .post-list__item {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   border-bottom: 2px solid rgba(153, 153, 151, 0.2);
 }
 
-.post-list__item .post-title h5, .post-list__item .post-title .site-title h1, .site-title .post-list__item .post-title h1 {
-  margin-bottom: 0;
-  text-align: left;
+@media (max-width: 61.9em) {
+  .post-list__item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
-.post-list__item .post-date {
-  margin-top: 0.25rem;
+@media (max-width: 47.9em) {
+  .post-list__item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.post-list__item:first-of-type {
+  padding-top: 0;
+}
+
+.post-list__item .post-title h2, .post-list__item .post-title .site-navigation a, .site-navigation .post-list__item .post-title a {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 47.9em) {
+  .post-list__item .post-title h2, .post-list__item .post-title .site-navigation a, .site-navigation .post-list__item .post-title a {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.post-title-single h1 {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 47.9em) {
+  .post-title-single h1 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.title-link {
+  opacity: 1;
+}
+
+.title-link:hover {
+  opacity: .8;
+}
+
+.post-excerpt *:last-child {
   margin-bottom: 0;
-  text-align: left;
+}
+
+.post-date {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+@media (max-width: 47.9em) {
+  .post-date {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.post-date a {
+  color: #999997;
+}
+
+.post-date a:focus, .post-date a:hover {
+  color: #E6C260;
 }
 
 .tags-title {
@@ -6564,7 +6554,19 @@ pre {
    ------------------------------------
 */
 .site-pagination {
-  margin-top: 4rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 61.9em) {
+  .site-pagination {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 47.9em) {
+  .site-pagination {
+    margin-top: 1rem;
+  }
 }
 
 .site-pagination ul {
@@ -6592,17 +6594,17 @@ pre {
 */
 .site-footer {
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 61.9em) {
   .site-footer {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 }
 
 @media (max-width: 47.9em) {
   .site-footer {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
