@@ -6620,17 +6620,6 @@ pre {
   margin-bottom: 0.25rem;
 }
 
-.post-title a,
-.page-title a {
-  color: #0F1E2B;
-}
-
-.post-title a:focus, .post-title a:hover,
-.page-title a:focus,
-.page-title a:hover {
-  color: #57B3FF;
-}
-
 /*
    ------------------------------------
    Posts
@@ -6653,7 +6642,7 @@ pre {
 }
 
 .link-char {
-  color: rgba(15, 30, 43, 0.6);
+  color: rgba(15, 30, 43, 0.4);
   margin-left: 0.25rem;
 }
 
@@ -6668,6 +6657,22 @@ pre {
   .post-meta {
     margin-bottom: 1rem;
   }
+}
+
+.post-meta a {
+  color: rgba(15, 30, 43, 0.4);
+}
+
+.post-meta a:focus, .post-meta a:hover {
+  color: #0F1E2B;
+}
+
+.post-meta .post-title a {
+  color: #0F1E2B;
+}
+
+.post-meta .post-title a:focus, .post-meta .post-title a:hover {
+  color: #57B3FF;
 }
 
 @media (max-width: 74.9em) {

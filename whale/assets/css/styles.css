@@ -7357,7 +7357,6 @@ button.close {
 
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
           transform: translate(0, -25%);
   -webkit-transition: -webkit-transform .3s ease-out;
   transition: -webkit-transform .3s ease-out;
@@ -7367,7 +7366,6 @@ button.close {
 
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 
@@ -8818,6 +8816,14 @@ a {
 
 .entry-meta {
   margin-bottom: 1.882rem;
+}
+
+.entry-meta a {
+  color: #6F7C82;
+}
+
+.entry-meta a:focus, .entry-meta a:hover {
+  color: #292E31;
 }
 
 .entry-meta .entry-time {

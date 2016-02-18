@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ site.title }} &middot; {{ meta.description }}
+{% endblock title %}
+
 {% block content %}
   {{ super() }}
 
@@ -15,27 +21,33 @@
     <div class="main col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       {% for post in posts %}
         <article>
-          {% if post.linked_url %}
-            <h2 class="post-title">
-              <a href="{{ post.linked_url }}">{{ post.title }}</a>
-              <span class="link-char">→</span>
-            </h2>
-          {% else %}
-            <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+          {% if post.title %}
+            {% if post.linked_url %}
+              <h2 class="post-title">
+                <a href="{{ post.linked_url }}">{{ post.title }}</a>
+                <span class="link-char">→</span>
+              </h2>
+            {% else %}
+              <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+            {% endif %}
           {% endif %}
 
           <div class="post-meta">
-            <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time>
+            <a href="{{ post.url }}"><time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date }}</time></a>
             {{ post.tags|tags(last_separator=' and ', prefix=' in ', suffix='.') }}
           </div>
 
           <div class="post-excerpt">
-            {% if post.linked_url %}
-              {{ post.content }}
-              <a href="{{ post.url }}" class="read-more">Permalink</a>
+            {% if post.title %}
+              {% if post.linked_url %}
+                {{ post.content }}
+                <a href="{{ post.url }}" class="read-more">Permalink</a>
+              {% else %}
+                {{ post.excerpt }}
+                <a href="{{ post.url }}" class="read-more">Read more</a>
+              {% endif %}
             {% else %}
-              {{ post.excerpt }}
-              <a href="{{ post.url }}" class="read-more">Read more</a>
+              {{ post.content }}
             {% endif %}
           </div>
         </article>
@@ -44,39 +56,39 @@
       {% endfor %}
 
       {% if pagination.has_pages %}
-      <nav class="site-pagination">
-        <ul class="pagination">
-          {% if pagination.has_prev %}
-            <li>
-              <a href="{{ pagination.prev }}" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-          {% else %}
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-          {% endif %}
+        <nav class="site-pagination">
+          <ul class="pagination">
+            {% if pagination.has_prev %}
+              <li>
+                <a href="{{ pagination.prev }}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% endif %}
 
-          <li><a>Page {{ pagination.page_number }} of {{ pagination.pages_count }}</a></li>
+            <li><a>Page {{ pagination.page_number }} of {{ pagination.pages_count }}</a></li>
 
-          {% if pagination.has_next %}
-            <li>
-              <a href="{{ pagination.next }}" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          {% else %}
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          {% endif %}
-        </ul>
-      </nav>
+            {% if pagination.has_next %}
+              <li>
+                <a href="{{ pagination.next }}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
       {% endif %}
     </div>
   </div>

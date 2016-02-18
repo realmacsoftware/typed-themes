@@ -1,5 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {{ meta.title }} &middot; {{ site.title }}
+{% endblock title %}
+
 {% block contentclass %}{{ super() }} class="page"{% endblock contentclass %}
 
 {% block content %}

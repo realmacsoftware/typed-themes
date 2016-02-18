@@ -230,7 +230,7 @@ a {
     color: $headings-color;
 
     @include hover-focus {
-      color: $brand-primary; 
+      color: $brand-primary;
     }
   }
 }
@@ -242,6 +242,14 @@ a {
 
 .entry-meta {
   margin-bottom: $spacer;
+
+  a {
+    color: $body-color;
+
+    @include hover-focus {
+      color: $headings-color;  
+    }
+  }
 
   .entry-time {
     margin-right: $spacer/2;

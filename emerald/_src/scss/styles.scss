@@ -244,6 +244,14 @@ pre {
   border-bottom: 2px solid $hr-border-color;
   margin-bottom: $headings-margin-bottom;
   padding-bottom: $headings-margin-bottom;
+
+  a {
+    color: rgba($body-color, .6);
+
+    @include hover-focus {
+      color: $body-color;  
+    }
+  }
 }
 
 .read-more {
