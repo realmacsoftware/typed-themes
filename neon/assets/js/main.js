@@ -5,7 +5,7 @@ $(document).ready(function() {
      ------------------------------------
   */
 
-  $('.post-excerpt, .post-content').fitVids()
+  $('.post-excerpt, .post-content, .content').fitVids()
 
   /*
      ------------------------------------
@@ -23,5 +23,3 @@ $(document).ready(function() {
     })
   })
 })
-
-

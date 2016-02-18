@@ -1,5 +1,15 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}
+  {{ super() }}
+
+  {% if meta.title == '' %}
+    {{ post.published_at|date }} &middot; {{ site.title }}
+  {% else %}
+    {{ meta.title }} &middot; {{ site.title }}
+  {% endif %}
+{% endblock title %}
+
 {% block meta %}
   {{ super() }}
 
@@ -35,9 +45,19 @@
   {{ super() }}
 
   <article class="post">
-    <div class="post-title-single">
-      <h1 data-text="{{ post.title }}">{{ post.title }}</h1>
-    </div>
+    {% if post.title %}
+      {% if post.linked_url %}
+        <div class="post-title title-link">
+          <h1 data-text="{{ post.title }} →">
+            <a href="{{ post.linked_url }}">{{ post.title }} →</a>
+          </h1>
+        </div>
+      {% else %}
+        <div class="post-title-single">
+          <h1 data-text="{{ post.title }}">{{ post.title }}</h1>
+        </div>
+      {% endif %}
+    {% endif %}
 
     <div class="post-date">
       {{ post.authors|authors(last_separator=' and ', prefix='by ', suffix=' on ') }} <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%B %-d %Y') }}</time>
