@@ -21,6 +21,13 @@
           <div class="clearfix"></div>
         {% endif %}
 
+        {% if filters.search.query %}
+          <div class="tag-filter">
+            <h2>Search results for “{{ filters.search.query }}”</h2>
+          </div>
+          <div class="clearfix"></div>
+        {% endif %}
+
         {% for post in posts %}
           <article class="entry">
             {% if post.linked_url %}{% else %}

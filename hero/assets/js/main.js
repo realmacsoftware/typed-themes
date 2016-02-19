@@ -12,12 +12,25 @@ $(document).ready(function () {
   function manageMenu () {
     if ($(window).width() > 991) {
       $('.navigation').show()
+      $('.site-search').hide()
     } else {
       $('.navigation').hide()
+      $('.site-search').show()
     }
   }
   manageMenu()
   $(window).bind('resize', manageMenu)
+
+  /*
+     ------------------------------------
+     Search
+     ------------------------------------
+  */
+
+  $('.site-search-trigger').click(function(e) {
+    e.preventDefault();
+    $('.site-search').animate({width: 'toggle'}, 350)
+  })
 
   /*
     ------------------------------------

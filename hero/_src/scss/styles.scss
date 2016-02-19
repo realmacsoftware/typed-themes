@@ -244,39 +244,6 @@ a {
         display: block;
       }
     }
-
-    &:first-of-type {
-      margin-top: 0;
-
-      a {
-        width: 32px;
-        height: 32px;
-        display: inline-block;
-        border: 2px solid $hr-border-color;
-        border-radius: 100%;
-        line-height: 30px;
-
-        @include hover-focus {
-          border-color: $brand-primary;
-        }
-
-        i {
-          margin-left: 5px;
-        }
-
-        @include media-breakpoint-down(md) {
-          width: auto;
-          height: auto;
-          border: none;
-          border-radius: 0;
-          line-height: inherit;
-
-          i {
-            margin-left: 0;
-          }
-        }
-      }
-    }
   }
 
   a {
@@ -284,6 +251,40 @@ a {
 
     @include hover-focus {
       color: $brand-primary;
+    }
+  }
+
+  .site-search-trigger {
+    position: relative;
+    display: inline-block;
+    top: -1px;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}
+
+.site-search {
+  float: left;
+  margin-top: -0.375rem;
+  margin-right: $spacer;
+  display: none;
+
+  @include media-breakpoint-down(md) {
+    float: none;
+    display: block;
+    margin-top: $spacer;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  input {
+    @extend .form-control;
+    max-width: 200px;
+
+    @include media-breakpoint-down(md) {
+      max-width: 100%;
     }
   }
 }
@@ -377,6 +378,10 @@ a {
     @extend .col-md-offset-1;
     @extend .col-xs-12;
     @extend .col-xs-offset-0;
+
+    h2 {
+      margin: 0;
+    }
   }
 
   .entry-banner {
