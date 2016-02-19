@@ -249,7 +249,7 @@ pre {
     color: rgba($body-color, .6);
 
     @include hover-focus {
-      color: $body-color;  
+      color: $body-color;
     }
   }
 }
@@ -363,6 +363,30 @@ pre {
     filter: blur(20px);
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/*
+   ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  color: $brand-primary;
+  font-weight: 700;
+  margin-top: $spacer*2;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: $spacer*4;
   }
 }
 

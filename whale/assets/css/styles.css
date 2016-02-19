@@ -8978,6 +8978,37 @@ a {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+.archive-month {
+  color: #00B7FF;
+  font-weight: 700;
+  margin-top: 3.764rem;
+}
+
+.archive-month:first-of-type {
+  margin-top: 0;
+}
+
+.archive-item {
+  margin-bottom: 1.882rem;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 5.646rem;
+}
+
+.archive-item h2 a {
+  color: #292E31;
+}
+
+.archive-item h2 a:focus, .archive-item h2 a:hover {
+  color: #00B7FF;
+}
+
+/*
+   ------------------------------------
    Footer
    ------------------------------------
 */

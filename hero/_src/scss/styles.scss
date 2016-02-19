@@ -403,7 +403,7 @@ a {
       color: $text-muted;
 
       @include hover-focus {
-        color: $body-color; 
+        color: $body-color;
       }
     }
 
@@ -493,6 +493,34 @@ a {
 
   .entry {
     padding-bottom: $spacer*3;
+  }
+}
+
+/*
+   ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  color: $brand-primary;
+  font-weight: 700;
+  margin-top: $spacer*3;
+
+  @include media-breakpoint-down(sm) {
+    margin-top: $spacer;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }
 

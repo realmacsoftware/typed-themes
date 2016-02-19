@@ -8721,6 +8721,38 @@ li:last-of-type {
 */
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+.archive-month {
+  color: #f7a700;
+  font-weight: 700;
+  margin-top: 3rem;
+}
+
+.archive-month:first-of-type {
+  margin-top: 0;
+}
+
+.archive-item {
+  margin-bottom: 1rem;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.archive-item h2 a, .archive-item .branding h1 a, .branding .archive-item h1 a {
+  color: #1F2224;
+  border-bottom: none;
+}
+
+.archive-item h2 a:focus, .archive-item .branding h1 a:focus, .branding .archive-item h1 a:focus, .archive-item h2 a:hover, .archive-item .branding h1 a:hover, .branding .archive-item h1 a:hover {
+  color: #f7a700;
+}
+
+/*
+   ------------------------------------
    Pages
    ------------------------------------
 */

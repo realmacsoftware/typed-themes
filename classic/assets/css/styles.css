@@ -599,6 +599,31 @@ article {
     margin-right: auto;
   }
 
+/* Archive
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.archive-month {
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  color: #2f76bb;
+}
+
+.archive-month:first-child {
+  margin-top: 0;
+}
+
+.archive-item {
+  margin-bottom: 24px;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 72px;
+}
+
 /* Bigfoot
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

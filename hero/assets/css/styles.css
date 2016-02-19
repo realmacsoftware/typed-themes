@@ -9228,6 +9228,35 @@ a {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+.archive-month {
+  color: #31A5FF;
+  font-weight: 700;
+  margin-top: 3.939rem;
+}
+
+@media (max-width: 767px) {
+  .archive-month {
+    margin-top: 1.313rem;
+  }
+}
+
+.archive-month:first-of-type {
+  margin-top: 0;
+}
+
+.archive-item {
+  margin-bottom: 1.313rem;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 0;
+}
+
+/*
+   ------------------------------------
    Authors
    ------------------------------------
 */

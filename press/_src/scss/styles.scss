@@ -273,6 +273,41 @@ li {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  color: $brand-primary;
+  font-weight: 700;
+  margin-top: $spacer*3;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: $spacer*4;
+  }
+
+  h2 {
+    a {
+      color: $headings-color;
+      border-bottom: none;
+
+      @include hover-focus {
+        color: $brand-primary; 
+      }
+    }
+  }
+}
+
+/*
+   ------------------------------------
    Pages
    ------------------------------------
 */
