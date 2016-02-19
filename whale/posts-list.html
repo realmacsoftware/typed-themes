@@ -17,6 +17,12 @@
         </div>
       {% endif %}
 
+      {% if filters.search.query %}
+        <div class="tag-filter">
+          <i class="fa fa-filter"></i>Search results for “{{ filters.search.query }}”
+        </div>
+      {% endif %}
+
       {% for post in posts %}
         <article class="entry">
           <header class="entry-header">
