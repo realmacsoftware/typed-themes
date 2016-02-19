@@ -4,8 +4,10 @@ $(function() {
 
   $('.menu-reveal').on('click', function(event) {
     event.preventDefault();
+
+    $('.site-nav li').toggle();
+    $('.site-search').toggle();
     ($(this).text() === 'Show Menu') ? $(this).text('Hide Menu') : $(this).text('Show Menu');
-    $('.site-nav li').slideToggle();
   });
 
 
