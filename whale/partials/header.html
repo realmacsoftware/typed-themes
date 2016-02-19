@@ -17,6 +17,13 @@
                   <a href="{{ item.url }}" class="nav-link">{{ item.title }}</a>
                 </li>
               {% endfor %}
+              <li class="site-search">
+                <form action="{{ site.blog_url }}" method="GET">
+                  <input name="q" type="text" placeholder="Search…" value="{% if filters %}{{ filters.search.query }}{% endif %}">
+                </form>
+
+                <a href="#" class="site-search-trigger"><i class="fa fa-search"></i></a>
+              </li>
             </ul>
           {% endif %}
         </nav>

@@ -8,13 +8,20 @@
     {% endif %}
 
     {% if site.navigation %}
-      <nav class="site-nav">
-        <ul>
+      <nav class="site-nav row">
+        <ul class="col-xs-12 col-sm-8">
           {% for navigation_item in site.navigation %}
             <li><a href="{{ navigation_item.url }}">{{ navigation_item.title }}</a></li>
           {% endfor %}
         </ul>
-        <a href="#" class="menu-reveal">Show Menu</a>
+
+        <div class="site-search col-xs-12 col-sm-4">
+          <form action="{{ site.blog_url }}" method="GET">
+            <input name="q" type="text" placeholder="Search..." value="{% if filters %}{{ filters.search.query }}{% endif %}" class="form-control">
+          </form>
+        </div>
+
+        <a href="#" class="col-xs-12 menu-reveal">Show Menu</a>
       </nav>
     {% endif %}
   </header>
