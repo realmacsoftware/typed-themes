@@ -746,6 +746,29 @@ strong {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  color: $brand-primary;
+  margin-top: $spacer*3;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: $spacer*3;
+  }
+}
+
+/*
+   ------------------------------------
    Pages
    ------------------------------------
 */

@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  {{ super() }}
+
+  {{ meta.title }} &middot; {{ site.title }}
+{% endblock title %}
+
+{% block contentclass %}{{ super() }} class="post-list"{% endblock contentclass %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="container">
+    <div class="row">
+      <div class="entry-list">
+        <div class="entry">
+          {% for year, year_posts in posts|groupby('published_at.year')|reverse %}
+            {% for month, month_posts in year_posts|groupby('published_at.month')|reverse %}
+              <p class="archive-month">{{ month_posts[0].published_at|date(format='%B %Y') }}</p>
+
+              {% for post in month_posts %}
+                <article class="archive-item">
+                  <h2 class="entry-title"><a href="{{ post.url }}" rel="bookmark">
+                    {% if post.title %}
+                      {{ post.title }}
+                    {% else %}
+                      {{ post.published_at|date(format='%B %-d at %H:%M') }}
+                    {% endif %}
+                  </a></h2>
+                </article>
+              {% endfor %}
+            {% endfor %}
+          {% else %}
+            <p>No posts</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

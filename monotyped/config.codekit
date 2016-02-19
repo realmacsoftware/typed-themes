@@ -1346,6 +1346,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/archive.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/archive.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/assets\/css\/styles.css": {
 		"fileType": 16,
 		"ignore": 1,

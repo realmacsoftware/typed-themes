@@ -6707,6 +6707,61 @@ pre {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+.archive-month {
+  color: #57B3FF;
+  font-weight: 700;
+  margin-top: 4rem;
+}
+
+@media (max-width: 74.9em) {
+  .archive-month {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 61.9em) {
+  .archive-month {
+    margin-top: 2rem;
+  }
+}
+
+.archive-month:first-of-type {
+  margin-top: 0;
+}
+
+.archive-item {
+  margin-bottom: 1rem;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 8rem;
+}
+
+@media (max-width: 74.9em) {
+  .archive-item:last-of-type {
+    margin-bottom: 6rem;
+  }
+}
+
+@media (max-width: 61.9em) {
+  .archive-item:last-of-type {
+    margin-bottom: 4rem;
+  }
+}
+
+.archive-item h2 a {
+  color: #0F1E2B;
+}
+
+.archive-item h2 a:focus, .archive-item h2 a:hover {
+  color: #57B3FF;
+}
+
+/*
+   ------------------------------------
    Pagination
    ------------------------------------
 */

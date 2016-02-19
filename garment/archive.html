@@ -1,0 +1,78 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  {{ super() }}
+
+  {{ meta.title }} &middot; {{ site.title }}
+{% endblock title %}
+
+{% block content %}
+  {{ super() }}
+
+  <main id="content" class="main page-posts-list">
+    <div class="wrapper">
+      <div class="content">
+        <div class="row">
+          <div class="content__inner">
+            {% include 'partials/header.html' %}
+
+            {% for year, year_posts in posts|groupby('published_at.year')|reverse %}
+              {% for month, month_posts in year_posts|groupby('published_at.month')|reverse %}
+                <p class="archive-month">{{ month_posts[0].published_at|date(format='%B %Y') }}</p>
+
+                {% for post in month_posts %}
+                  <div class="archive-item">
+                    <h2 class="post-title"><a href="{{ post.url }}" rel="bookmark">
+                      {% if post.title %}
+                        {{ post.title }}
+                      {% else %}
+                        {{ post.published_at|date(format='%B %-d at %H:%M') }}
+                      {% endif %}
+                    </a></h2>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            {% else %}
+              <p>No posts</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+  </main>
+
+  <aside class="sidebar">
+    {% if site.description %}
+      <div class="site-description">
+        <h6>About {{ site.title }}</h6>
+        {{ site.description }}
+      </div>
+    {% endif %}
+
+    {% if theme.variables.twitter_username or theme.variables.facebook_url or theme.variables.linkedin_url or theme.variables.instagram_username or theme.variables.pinterest_username %}
+      <div class="typed-social-wrapper">
+        {% if theme.variables.twitter_username %}
+          <a href="https://twitter.com/{{ theme.variables.twitter_username }}" class="typed-social typed-social-twitter"></a>
+        {% endif %}
+
+        {% if theme.variables.facebook_url %}
+          <a href="{{ theme.variables.facebook_url }}" class="typed-social typed-social-facebook"></a>
+        {% endif %}
+
+        {% if theme.variables.linkedin_url %}
+          <a href="{{ theme.variables.linkedin_url }}" class="typed-social typed-social-linkedin"></a>
+        {% endif %}
+
+        {% if theme.variables.instagram_username %}
+          <a href="https://www.instagram.com/{{ theme.variables.instagram_username }}" class="typed-social typed-social-instagram"></a>
+        {% endif %}
+
+        {% if theme.variables.pinterest_username %}
+          <a href="https://pinterest.com/{{ theme.variables.pinterest_username }}" class="typed-social typed-social-pinterest"></a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </aside>
+{% endblock content %}

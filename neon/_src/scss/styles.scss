@@ -248,6 +248,36 @@ pre {
 
 /*
    ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  @extend small;
+  margin-top: $spacer*2;
+
+  @include media-breakpoint-down(md) {
+    margin-top: $spacer;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: $spacer/2;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+
+  &:last-of-type {
+    margin-bottom: $spacer*2;
+  }
+}
+
+/*
+   ------------------------------------
    Posts
    ------------------------------------
 */
@@ -320,7 +350,7 @@ pre {
     color: $body-color;
 
     @include hover-focus {
-      color: $brand-primary; 
+      color: $brand-primary;
     }
   }
 }

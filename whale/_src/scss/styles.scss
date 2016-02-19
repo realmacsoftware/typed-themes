@@ -247,7 +247,7 @@ a {
     color: $body-color;
 
     @include hover-focus {
-      color: $headings-color;  
+      color: $headings-color;
     }
   }
 
@@ -407,6 +407,41 @@ a {
   background: rgba($brand-primary, .08);
   color: $brand-primary;
   @include border-radius($border-radius);
+}
+
+/*
+   ------------------------------------
+   Archive
+   ------------------------------------
+*/
+
+.archive-month {
+  color: $brand-primary;
+  font-weight: 700;
+  margin-top: $spacer*2;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.archive-item {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: $spacer*3;
+  }
+
+  h2 {
+
+    a {
+      color: $headings-color;
+
+      @include hover-focus {
+        color: $brand-primary;
+      }
+    }
+  }
 }
 
 /*

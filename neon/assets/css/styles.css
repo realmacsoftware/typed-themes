@@ -2543,7 +2543,7 @@ mark {
   color: #000;
 }
 
-small, h6, .h6, .site-description, .post-date, .tags-title, .site-footer {
+small, h6, .h6, .site-description, .archive-month, .post-date, .tags-title, .site-footer {
   font-size: 80%;
 }
 
@@ -3007,7 +3007,7 @@ hr {
   border-top: 0.1rem solid rgba(153, 153, 151, 0.2);
 }
 
-small, h6, .h6, .site-description, .post-date, .tags-title, .site-footer,
+small, h6, .h6, .site-description, .archive-month, .post-date, .tags-title, .site-footer,
 .small {
   font-size: 60%;
   letter-spacing: 2px;
@@ -3016,14 +3016,14 @@ small, h6, .h6, .site-description, .post-date, .tags-title, .site-footer,
 }
 
 @media (max-width: 61.9em) {
-  small, h6, .h6, .site-description, .post-date, .tags-title, .site-footer,
+  small, h6, .h6, .site-description, .archive-month, .post-date, .tags-title, .site-footer,
   .small {
     font-size: 75%;
   }
 }
 
 @media (max-width: 47.9em) {
-  small, h6, .h6, .site-description, .post-date, .tags-title, .site-footer,
+  small, h6, .h6, .site-description, .archive-month, .post-date, .tags-title, .site-footer,
   .small {
     font-size: 65%;
   }
@@ -6402,6 +6402,35 @@ pre {
 
 .error-text {
   text-align: center;
+}
+
+/*
+   ------------------------------------
+   Archive
+   ------------------------------------
+*/
+.archive-month {
+  margin-top: 2rem;
+}
+
+@media (max-width: 61.9em) {
+  .archive-month {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 47.9em) {
+  .archive-month {
+    margin-top: 0.5rem;
+  }
+}
+
+.archive-month:first-of-type {
+  margin-top: 0;
+}
+
+.archive-item:last-of-type {
+  margin-bottom: 2rem;
 }
 
 /*
