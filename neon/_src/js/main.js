@@ -21,5 +21,8 @@ $(document).ready(function() {
     $('.site-navigation .center').css({
       'margin-top': -(centerHeight/2)
     })
+
+    $('.menu-toggle i').toggleClass('fa-close')
+    $('.menu-toggle i').toggleClass('fa-bars')
   })
 })

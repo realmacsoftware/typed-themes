@@ -5,7 +5,7 @@ $(document).ready(function() {
      ------------------------------------
   */
 
-  $('.post-excerpt, .post-content, .content').fitVids()
+  $('.post-excerpt, .post-content').fitVids()
 
   /*
      ------------------------------------
@@ -21,5 +21,10 @@ $(document).ready(function() {
     $('.site-navigation .center').css({
       'margin-top': -(centerHeight/2)
     })
+
+    $('.menu-toggle i').toggleClass('fa-close')
+    $('.menu-toggle i').toggleClass('fa-bars')
   })
 })
+
+

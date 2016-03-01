@@ -6238,6 +6238,15 @@ pre {
   float: left;
 }
 
+.site-logo a {
+  display: inline-block;
+}
+
+.site-logo img {
+  display: inline-block;
+  margin: 0;
+}
+
 .site-title h1 {
   margin-bottom: 0;
   font-weight: 700;
@@ -6260,6 +6269,8 @@ pre {
   float: right;
   height: 20px;
   margin-top: -6px;
+  position: relative;
+  z-index: 101;
 }
 
 .menu-toggle.has-site-description {
@@ -6268,7 +6279,7 @@ pre {
 
 .site-navigation {
   position: fixed;
-  top: 46px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -6276,18 +6287,6 @@ pre {
   z-index: 100;
   overflow: 0;
   display: none;
-}
-
-@media (max-width: 61.9em) {
-  .site-navigation {
-    top: 40px;
-  }
-}
-
-@media (max-width: 47.9em) {
-  .site-navigation {
-    top: 36px;
-  }
 }
 
 .site-navigation .center {
@@ -6318,22 +6317,6 @@ pre {
   font-family: "Montserrat", sans-serif;
   padding: 0.5rem 0;
   margin: 0;
-}
-
-.has-site-description + .site-navigation {
-  top: 64px;
-}
-
-@media (max-width: 61.9em) {
-  .has-site-description + .site-navigation {
-    top: 62px;
-  }
-}
-
-@media (max-width: 47.9em) {
-  .has-site-description + .site-navigation {
-    top: 52px;
-  }
 }
 
 /*
