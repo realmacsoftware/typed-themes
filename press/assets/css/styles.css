@@ -258,12 +258,12 @@ th {
   }
   p,
   h2,
-  .branding h1,
+  .branding .site-title,
   h3 {
     orphans: 3;
     widows: 3;
   }
-  h2, .branding h1,
+  h2, .branding .site-title,
   h3 {
     page-break-after: avoid;
   }
@@ -337,7 +337,7 @@ body {
   outline: none !important;
 }
 
-h1, h2, .branding h1, h3, h4, h5, h6 {
+h1, h2, .branding .site-title, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
 }
@@ -500,7 +500,7 @@ output {
   display: none !important;
 }
 
-h1, h2, .branding h1, h3, h4, h5, h6,
+h1, h2, .branding .site-title, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 1rem;
   font-family: inherit;
@@ -513,7 +513,7 @@ h1 {
   font-size: 2.5rem;
 }
 
-h2, .branding h1 {
+h2, .branding .site-title {
   font-size: 2rem;
 }
 
@@ -8622,23 +8622,37 @@ li:last-of-type {
   }
 }
 
-.branding h1 {
+.branding .site-title {
   text-transform: uppercase;
   margin-bottom: 0;
 }
 
 @media (max-width: 991px) {
-  .branding h1 {
+  .branding .site-title {
     margin: 2rem 0 0 0;
   }
 }
 
-.branding a {
+.branding .site-title a {
   color: #1F2224;
 }
 
-.branding a:focus, .branding a:hover {
+.branding .site-title a:focus, .branding .site-title a:hover {
   color: #1F2224;
+}
+
+.branding .site-logo {
+  margin-bottom: 0;
+}
+
+.branding .site-logo a {
+  display: inline-block;
+}
+
+.branding .site-logo img {
+  display: inline-block;
+  margin: 0;
+  box-shadow: none;
 }
 
 /*
@@ -8742,12 +8756,12 @@ li:last-of-type {
   margin-bottom: 4rem;
 }
 
-.archive-item h2 a, .archive-item .branding h1 a, .branding .archive-item h1 a {
+.archive-item h2 a, .archive-item .branding .site-title a, .branding .archive-item .site-title a {
   color: #1F2224;
   border-bottom: none;
 }
 
-.archive-item h2 a:focus, .archive-item .branding h1 a:focus, .branding .archive-item h1 a:focus, .archive-item h2 a:hover, .archive-item .branding h1 a:hover, .branding .archive-item h1 a:hover {
+.archive-item h2 a:focus, .archive-item .branding .site-title a:focus, .branding .archive-item .site-title a:focus, .archive-item h2 a:hover, .archive-item .branding .site-title a:hover, .branding .archive-item .site-title a:hover {
   color: #f7a700;
 }
 
