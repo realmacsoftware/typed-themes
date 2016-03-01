@@ -2,9 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="site-navigation">
-        <h1 class="site-brand">
-          <a href="/">{{ site.title }}</a>
-        </h1>
+        {% if site.logo %}
+          <h1 class="site-logo"><a href="/"><img src="{{ site.logo }}" alt="{{ site.title }}"></a></h1>
+        {% else %}
+          <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+        {% endif %}
 
         <div class="nav-toggle" id="nav-toggle"><i class="fa fa-bars"></i></div>
         <div class="clearfix hidden-md-up"></div>
