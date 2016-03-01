@@ -1,7 +1,12 @@
 <header class="site-header">
   <div class="site-header__inner">
     <div class="site-info">
-      <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+      {% if site.logo %}
+        <h1 class="site-logo"><a href="/"><img src="{{ site.logo }}" alt="{{ site.title }}"></a></h1>
+      {% else %}
+        <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+      {% endif %}
+      
       <div class="site-description">{{ site.description }}</div>
     </div>
 

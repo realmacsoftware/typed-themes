@@ -9097,6 +9097,23 @@ pre {
   padding-left: 1rem;
 }
 
+.site-logo {
+  margin-bottom: 0;
+  margin-top: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: block;
+}
+
+.site-logo a {
+  display: inline-block;
+}
+
+.site-logo img {
+  display: inline-block;
+  margin: 0;
+}
+
 .site-title {
   margin-bottom: 0;
   margin-top: 0;
