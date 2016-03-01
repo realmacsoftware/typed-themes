@@ -109,6 +109,27 @@ strong {
   }
 }
 
+.site-logo {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  top: -22px;
+
+  @include media-breakpoint-down(sm) {
+    position: static;
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
 .site-title {
   font-family: $font-family-title;
   font-size: $display2-size;
