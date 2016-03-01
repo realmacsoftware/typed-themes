@@ -70,10 +70,24 @@ a {
     }
   }
 
-  .site-brand {
+  .site-title {
     font-size: $font-size-h4;
     float: left;
     margin-bottom: 0;
+  }
+
+  .site-logo {
+    float: left;
+    margin-bottom: 0;
+
+    a {
+      display: inline-block;
+    }
+
+    img {
+      display: inline-block;
+      margin: 0;
+    }
   }
 }
 
@@ -153,7 +167,7 @@ a {
 }
 
 @include media-breakpoint-down(sm) {
-  .site-brand {
+  .site-title {
     display: inline-block;
   }
 

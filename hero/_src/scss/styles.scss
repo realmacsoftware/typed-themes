@@ -155,6 +155,19 @@ a {
 .branding {
   float: left;
 
+  .site-logo {
+    margin: 0;
+
+    a {
+      display: inline-block;
+    }
+
+    img {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+
   .site-title {
     margin: 0;
     font-size: $font-size-h5;

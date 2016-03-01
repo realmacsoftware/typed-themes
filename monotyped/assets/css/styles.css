@@ -6580,6 +6580,20 @@ strong {
       margin-bottom: 4rem;
       text-align: left; } }
 
+.site-logo {
+  margin-top: 0; }
+  @media (max-width: 61.9em) {
+    .site-logo {
+      margin-bottom: 0.25rem; } }
+  .site-logo a {
+    text-decoration: none;
+    background: none;
+    padding: 0;
+    display: inline-block; }
+  .site-logo img {
+    display: inline-block;
+    margin: 0; }
+
 .site-title {
   margin-top: 0; }
   @media (max-width: 61.9em) {

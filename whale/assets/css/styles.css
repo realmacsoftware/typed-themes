@@ -8719,10 +8719,24 @@ a {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.site-header .site-brand {
+.site-header .site-title {
   font-size: 1.5rem;
   float: left;
   margin-bottom: 0;
+}
+
+.site-header .site-logo {
+  float: left;
+  margin-bottom: 0;
+}
+
+.site-header .site-logo a {
+  display: inline-block;
+}
+
+.site-header .site-logo img {
+  display: inline-block;
+  margin: 0;
 }
 
 .site-description {
@@ -8783,7 +8797,7 @@ a {
 }
 
 @media (max-width: 47.9em) {
-  .site-brand {
+  .site-title {
     display: inline-block;
   }
   .nav-collapse {

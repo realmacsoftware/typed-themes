@@ -1,5 +1,9 @@
 <div class="site-header">
-  <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+  {% if site.logo %}
+    <h1 class="site-logo"><a href="/"><img src="{{ site.logo }}" alt="{{ site.title }}"></a></h1>
+  {% else %}
+    <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+  {% endif %}
 
   {% if site.navigation %}
     <nav class="navigation">

@@ -93,6 +93,18 @@ pre {
   float: left;
 }
 
+.site-logo {
+
+  a {
+    display: inline-block;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
 .site-title {
 
   h1 {
@@ -121,6 +133,8 @@ pre {
   float: right;
   height: 20px;
   margin-top: -6px;
+  position: relative;
+  z-index: 101;
 
   &.has-site-description {
     margin-top: 6px;
@@ -129,7 +143,7 @@ pre {
 
 .site-navigation {
   position: fixed;
-  top: 46px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -137,14 +151,6 @@ pre {
   z-index: 100;
   overflow: 0;
   display: none;
-
-  @include media-breakpoint-down(md) {
-    top: 40px;
-  }
-
-  @include media-breakpoint-down(sm) {
-    top: 36px;
-  }
 
   .center {
     position: absolute;
@@ -177,18 +183,6 @@ pre {
     @extend h2;
     padding: $spacer/2 0;
     margin: 0;
-  }
-}
-
-.has-site-description + .site-navigation {
-  top: 64px;
-
-  @include media-breakpoint-down(md) {
-    top: 62px;
-  }
-
-  @include media-breakpoint-down(sm) {
-    top: 52px;
   }
 }
 

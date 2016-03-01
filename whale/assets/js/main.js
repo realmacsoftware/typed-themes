@@ -30,7 +30,7 @@ $(document).ready(function () {
       $('.site-search form').show()
     }
   }
-  manageMenu()
+  manageSearch()
   $(window).bind('resize', manageSearch)
 
   /*

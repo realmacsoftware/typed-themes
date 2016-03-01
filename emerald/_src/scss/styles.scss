@@ -98,6 +98,23 @@ pre {
   padding-left: $spacer;
 }
 
+.site-logo {
+  margin-bottom: 0;
+  margin-top: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: block;
+
+  a {
+    display: inline-block;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
 .site-title {
   @extend h4;
   margin-bottom: 0;

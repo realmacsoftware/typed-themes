@@ -91,6 +91,26 @@ strong {
   }
 }
 
+.site-logo {
+  margin-top: 0;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $spacer/4;
+  }
+
+  a {
+    text-decoration: none;
+    background: none;
+    padding: 0;
+    display: inline-block;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
 .site-title {
   @extend h2;
   margin-top: 0;

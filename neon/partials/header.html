@@ -1,8 +1,10 @@
 <header class="site-header">
   <div class="site-meta">
-    <div class="site-title">
-      <h1><a href="/">{{ site.title }}</a></h1>
-    </div>
+    {% if site.logo %}
+      <div class="site-logo"><a href="/"><img src="{{ site.logo }}" alt="{{ site.title }}"></a></div>
+    {% else %}
+      <div class="site-title"><h1><a href="/">{{ site.title }}</a></h1></div>
+    {% endif %}
 
     {% if site.description %}
       <div class="site-description">

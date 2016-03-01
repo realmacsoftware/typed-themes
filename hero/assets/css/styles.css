@@ -8952,6 +8952,19 @@ a {
   float: left;
 }
 
+.branding .site-logo {
+  margin: 0;
+}
+
+.branding .site-logo a {
+  display: inline-block;
+}
+
+.branding .site-logo img {
+  display: inline-block;
+  margin: 0;
+}
+
 .branding .site-title {
   margin: 0;
   font-size: 1.25rem;

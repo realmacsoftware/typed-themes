@@ -8942,6 +8942,29 @@ strong {
   }
 }
 
+.site-logo {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  top: -22px;
+}
+
+@media (max-width: 47.9em) {
+  .site-logo {
+    position: static;
+  }
+}
+
+.site-logo a {
+  display: inline-block;
+}
+
+.site-logo img {
+  display: inline-block;
+  margin: 0;
+}
+
 .site-title {
   font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
   font-size: 4.5rem;
