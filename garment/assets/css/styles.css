@@ -6419,6 +6419,29 @@ pre {
   }
 }
 
+.site-logo {
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+@media (max-width: 74.9em) {
+  .site-logo {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+}
+
+.site-logo a {
+  display: inline-block;
+}
+
+.site-logo img {
+  display: inline-block;
+  margin: 0;
+}
+
 .site-title {
   font-size: 1.25rem;
   padding: 0;
